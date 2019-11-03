@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5093E49E-881F-4415-8E90-C36FE2E54D28}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SistemaEscolar</RootNamespace>
+    <AssemblyName>SistemaEscolar</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Gui\Dialogos\DialogoRegistrarAlumno.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\Dialogos\DialogoRegistrarAula.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\Dialogos\DialogoRegistrarCarrera.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\Dialogos\DialogoRegistrarEmpleado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\Secciones\SeccionAlumnos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\Secciones\SeccionAulas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\Secciones\SeccionHorarios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\Secciones\SeccionMaterias.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\Secciones\SeccionPersonal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\Secciones\SeccionCarreras.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\Ventanas\VentanaLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Datos\Conexion.cs" />
+    <Compile Include="Datos\Consultas\Consulta.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarAlumnos.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaAltaAlumno.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaAltaMateria.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaAltaPersona.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarEspecialidades.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarTutores.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarAdmin.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarCarreras.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarMateria.cs" />
+    <Compile Include="Entidades\Administrador.cs" />
+    <Compile Include="Entidades\Alumno.cs" />
+    <Compile Include="Entidades\Carrera.cs" />
+    <Compile Include="Entidades\Especialidad.cs" />
+    <Compile Include="Entidades\Materia.cs" />
+    <Compile Include="Entidades\Persona.cs" />
+    <Compile Include="Entidades\Tutor.cs" />
+    <Compile Include="Gui\Dialogos\DialogoRegistrarAlumno.xaml.cs">
+      <DependentUpon>DialogoRegistrarAlumno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Dialogos\DialogoRegistrarAula.xaml.cs">
+      <DependentUpon>DialogoRegistrarAula.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Dialogos\DialogoRegistrarCarrera.xaml.cs">
+      <DependentUpon>DialogoRegistrarCarrera.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Dialogos\DialogoRegistrarEmpleado.xaml.cs">
+      <DependentUpon>DialogoRegistrarEmpleado.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Vistas\Asignatura.cs" />
+    <Compile Include="Gui\Vistas\Aula.cs" />
+    <Compile Include="Gui\Vistas\Carrera.cs" />
+    <Compile Include="Gui\Vistas\Horario.cs" />
+    <Compile Include="Gui\Vistas\Materia.cs" />
+    <Compile Include="Gui\Modelos\ModeloSeccionAlumnos.cs" />
+    <Compile Include="Gui\Modelos\ModeloSeccionAulas.cs" />
+    <Compile Include="Gui\Modelos\ModeloSeccionCarreras.cs" />
+    <Compile Include="Gui\Modelos\ModeloSeccionHorarios.cs" />
+    <Compile Include="Gui\Modelos\ModeloSeccionMaterias.cs" />
+    <Compile Include="Gui\Modelos\ModeloSeccionPersonal.cs" />
+    <Compile Include="Gui\Secciones\SeccionAlumnos.xaml.cs">
+      <DependentUpon>SeccionAlumnos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Secciones\SeccionAulas.xaml.cs">
+      <DependentUpon>SeccionAulas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Secciones\SeccionHorarios.xaml.cs">
+      <DependentUpon>SeccionHorarios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Secciones\SeccionMaterias.xaml.cs">
+      <DependentUpon>SeccionMaterias.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Secciones\SeccionPersonal.xaml.cs">
+      <DependentUpon>SeccionPersonal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Secciones\SeccionCarreras.xaml.cs">
+      <DependentUpon>SeccionCarreras.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Util\CornerRadiusSetter.cs" />
+    <Compile Include="Gui\Ventanas\VentanaLogin.xaml.cs">
+      <DependentUpon>VentanaLogin.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Gui\Ventanas\VentanaAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Gui\Ventanas\VentanaAdmin.xaml.cs">
+      <DependentUpon>VentanaAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Negocios\Casos\CasoUso.cs" />
+    <Compile Include="Negocios\Casos\CasoUsoEscritura.cs" />
+    <Compile Include="Negocios\Casos\CasoUsoLectura.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoAltaPersona.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarAlumnos.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarEspecialidades.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarTutores.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoRegistrarAlumno.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoSeleccionarAdmin.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarCarreras.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoSeleccionarMateria.cs" />
+    <Compile Include="Negocios\Presentadores\Presentador.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorAdministrador.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorListaAlumnos.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorListarCarreras.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorListarEspecialidades.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorListaTutores.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorMateria.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Negocios\Validadores\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,160 @@
+﻿<Window x:Class="SistemaEscolar.Gui.Dialogos.DialogoRegistrarAlumno"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SistemaEscolar.Gui.Dialogos"
+        xmlns:util="clr-namespace:SistemaEscolar.Gui.Util"
+        mc:Ignorable="d"
+        Title="DialogoRegistrarAlumno" Height="700" Width="500"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+
+    <Border Padding="20 10 20 10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            
+            <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+
+                    <!--DATOS PERSONALES-->
+                    <TextBlock Text="Datos Personales" TextAlignment="Center" FontSize="13" FontWeight="Bold" Margin="0 10 0 10"/>
+                    
+                    <!--Nombre-->
+                    <TextBlock Text="Nombre(s)"/>
+                    <TextBox x:Name="tbNombre" Height="30" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
+
+                    <!--Apellido Paterno-->
+                    <TextBlock Text="Apellido Paterno"/>
+                    <TextBox x:Name="tbApellidoPaterno" Height="30" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
+
+                    <!--Apellido Paterno-->
+                    <TextBlock Text="Apellido Materno"/>
+                    <TextBox x:Name="tbApellidoMaterno" Height="30" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
+
+                    <!--Fecha de nac-->
+                    <TextBlock Text="Fecha de nacimiento"/>
+                    <Grid Margin="0 5 0 15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                    
+                        <!--Dia-->
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Dia" TextAlignment="Center"/>
+                        <ComboBox x:Name="cbFechaDia" Grid.Column="0" Grid.Row="1" Height="30" util:CornerRadiusSetter.CornerRadius="10" Margin="5 0"/>
+
+                        <!--Mes-->
+                        <TextBlock Grid.Column="1" Grid.Row="0" Text="Mes" TextAlignment="Center"/>
+                        <ComboBox x:Name="cbFechaMes" Grid.Column="1" Grid.Row="1" Height="30" util:CornerRadiusSetter.CornerRadius="10" Margin="5 0"/>
+
+                        <!--Año-->
+                        <TextBlock Grid.Column="2" Grid.Row="0" Text="Año" TextAlignment="Center"/>
+                        <ComboBox x:Name="cbFechaAnio" Grid.Column="2" Grid.Row="1" Height="30" util:CornerRadiusSetter.CornerRadius="10" Margin="5 0"/>
+                    </Grid>
+
+                    <!--Sexo-->
+                    <TextBlock Text="Sexo"/>
+                    <RadioButton Content="Hombre" Margin="0 5 0 0"/>
+                    <RadioButton Content="Mujer" Margin="0 5 0 15"/>
+
+                    <!--CURP-->
+                    <TextBlock Text="CURP"/>
+                    <TextBox x:Name="tbCurp" Height="30" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
+
+                    <!--Telefono-->
+                    <TextBlock Text="Telefono"/>
+                    <TextBox x:Name="tbTelefono" Height="30" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
+
+                    <!--DIRECCION-->
+                    <TextBlock Text="Direccion" TextAlignment="Center" FontSize="13" FontWeight="Bold" Margin="0 10 0 10"/>
+                    
+                    <!--Estado civil-->
+                    <TextBlock Text="Estado civil"/>
+                    <ComboBox Name="cbEstadoCivil" Height="30" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
+
+                    <!--Codigo Postal-->
+                    <TextBlock Text="Codigo postal"/>
+                    <TextBox x:Name="tbCodigoPostal" Height="30" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
+
+                    <!--Calle-->
+                    <TextBlock Text="Calle"/>
+                    <ComboBox x:Name="cbCalle" Height="30" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
+
+                    <!--Numero Interior y Exterior-->
+                    <Grid Margin="0 0 0 15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <!--Numero interior-->
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Numero interior" TextAlignment="Center"/>
+                        <TextBox x:Name="tbNumeroInterior" Grid.Column="0" Grid.Row="1" Height="30" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="0 0 5 0"/>
+
+                        <!--Numero exterior-->
+                        <TextBlock Grid.Column="1" Grid.Row="0" Text="Numero exterior" TextAlignment="Center"/>
+                        <TextBox x:Name="tbNumeroExterior" Grid.Column="1" Grid.Row="1" Height="30" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="5 0 0 0"/>
+                    </Grid>
+
+                    <!--Colonia-->
+                    <TextBlock Text="Colonia"/>
+                    <ComboBox x:Name="cbColonia" Height="30" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
+
+                    <!--Ciudad-->
+                    <TextBlock Text="Ciudad"/>
+                    <ComboBox x:Name="cbCiudad" Height="30" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
+
+                    <!--Estado-->
+                    <TextBlock Text="Estado"/>
+                    <ComboBox x:Name="cbEstado" Height="30" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
+
+                    <!--DATOS ACADEMICOS-->
+                    <TextBlock Text="Datos Académicos" TextAlignment="Center" FontSize="13" FontWeight="Bold" Margin="0 10 0 10"/>
+                    
+                    <!--Matricula-->
+                    <TextBlock Text="Matricula"/>
+                    <TextBox x:Name="tbMatricula" Height="30" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
+
+                    <!--Correo institucional-->
+                    <TextBlock Text="Correo institucional"/>
+                    <TextBox x:Name="tbCorreoInstitucional" Height="30" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
+
+                    <!--Carrera-->
+                    <TextBlock Text="Carrera"/>
+                    <ComboBox x:Name="cbCarrera" Height="30" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
+
+                    <!--Especialidad-->
+                    <TextBlock Text="Especialidad"/>
+                    <ComboBox x:Name="cbEspecialidad" Height="30" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
+                    
+                    <!--Grupo-->
+                    <TextBlock Text="Grupo"/>
+                    <TextBox x:Name="tbGrupo" Height="30" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
+
+                    <!--Tutor-->
+                    <TextBlock Text="Tutor"/>
+                    <ComboBox x:Name="cbTutor" Height="30" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
+                </StackPanel>
+            </ScrollViewer>
+
+            <Button x:Name="bRegistrar" Grid.Row="2" Content="Registrar" util:CornerRadiusSetter.CornerRadius="10"/>
+        </Grid>
+    </Border>
+    
+</Window>

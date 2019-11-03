@@ -1,0 +1,292 @@
+﻿<UserControl x:Class="SistemaEscolar.Gui.Secciones.SeccionAulas"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SistemaEscolar.Gui.Secciones"
+             xmlns:util="clr-namespace:SistemaEscolar.Gui.Util"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="1200"
+             Background="White">
+
+    <Border Padding="20">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <!--Derecha-->
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <!--Filtros-->
+                <ComboBox Grid.Column="0" Grid.Row="0" Padding="10 0" VerticalContentAlignment="Center" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 5 5">
+                    <ComboBoxItem Content="Item"/>
+                    <ComboBoxItem Content="Item"/>
+                    <ComboBoxItem Content="Item"/>
+                </ComboBox>
+
+                <TextBox Grid.Column="1" Grid.Row="0" Text="Matricula" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="5 5 0 5"/>
+                
+                <TextBox Grid.Column="2" Grid.Row="0" Text="Matricula" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="5 5 0 5"/>
+                
+                <TextBox Grid.Column="3" Grid.Row="0" Text="Matricula" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="5 5 0 5"/>
+
+                <TextBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="Matricula" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 5"/>
+
+                <ComboBox Grid.Column="2" Grid.Row="1" Padding="10 0" VerticalContentAlignment="Center" util:CornerRadiusSetter.CornerRadius="10" Margin="5 5 0 5">
+                    <ComboBoxItem Content="Item"/>
+                    <ComboBoxItem Content="Item"/>
+                    <ComboBoxItem Content="Item"/>
+                </ComboBox>
+
+                <ComboBox Grid.Column="3" Grid.Row="1" Padding="10 0" VerticalContentAlignment="Center" util:CornerRadiusSetter.CornerRadius="10" Margin="5 5 0 5">
+                    <ComboBoxItem Content="Item"/>
+                    <ComboBoxItem Content="Item"/>
+                    <ComboBoxItem Content="Item"/>
+                </ComboBox>
+
+                <!--Aulas-->
+                <ListView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4" Margin="0 20 0 0" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Aulas}">
+
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            <Setter Property="Margin" Value="0 10 0 0"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="Plantilla" Grid.Column="0"/>
+                                    <TextBlock Text="Plantilla" Grid.Column="1"/>
+                                    <TextBlock Text="Plantilla" Grid.Column="2"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </Grid>
+
+            <!--Izquierda-->
+            <Border Grid.Column="1" Padding="20 0 0 0">
+                <StackPanel>
+
+                    <!--Botones-->
+                    <Grid Height="40">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="120"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Border Padding="5" Grid.Column="0" >
+                            <Button Content="Editar" util:CornerRadiusSetter.CornerRadius="10"/>
+                        </Border>
+
+                        <Border Padding="5" Grid.Column="3" >
+                            <Button x:Name="bRegistrarAula" Content="Nuevo" util:CornerRadiusSetter.CornerRadius="10"/>
+                        </Border>
+                    </Grid>
+
+                    <!--Informacion-->
+                    <TextBlock Text="1202" TextAlignment="Center" FontSize="18"/>
+                    <TextBlock Text="Salon de clases" TextAlignment="Center" FontSize="18"/>
+                    <TextBlock Text="Capacidad: 40" TextAlignment="Center" FontSize="18"/>
+                    
+                    <!--Horarios-->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="160"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <!--Dias de la semana-->
+                        <Border Grid.Column="0" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
+                            <TextBlock Text="Lunes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        <Border Grid.Column="1" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
+                            <TextBlock Text="Lunes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        <Border Grid.Column="2" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
+                            <TextBlock Text="Lunes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        <Border Grid.Column="3" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
+                            <TextBlock Text="Lunes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        <Border Grid.Column="4" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
+                            <TextBlock Text="Lunes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        <Border Grid.Column="5" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
+                            <TextBlock Text="Lunes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+
+                        <!--Horas Lunes-->
+                        <ListView Grid.Column="0" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
+
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
+                                        <StackPanel>
+                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <!--Horas Martes-->
+                        <ListView Grid.Column="1" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
+
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
+                                        <StackPanel>
+                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <!--Horas Miercoles-->
+                        <ListView Grid.Column="2" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
+
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
+                                        <StackPanel>
+                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <!--Horas Jueves-->
+                        <ListView Grid.Column="3" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
+
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
+                                        <StackPanel>
+                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <!--Horas Viernes-->
+                        <ListView Grid.Column="4" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
+
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
+                                        <StackPanel>
+                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <!--Horas Sabado-->
+                        <ListView Grid.Column="5" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
+
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
+                                        <StackPanel>
+                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
+
+</UserControl>
