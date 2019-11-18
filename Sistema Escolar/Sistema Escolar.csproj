@@ -110,10 +110,14 @@
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaAltaMateria.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaAltaPersona.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarEspecialidades.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarEspecialidadesPorCarrera.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarTutores.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistaAlumnos.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarAdmin.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarCarreras.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarCantidadAlumnosRegistrados.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarMateria.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarVistaDireccionPersona.cs" />
     <Compile Include="Entidades\Administrador.cs" />
     <Compile Include="Entidades\Alumno.cs" />
     <Compile Include="Entidades\Carrera.cs" />
@@ -133,6 +137,8 @@
     <Compile Include="Gui\Dialogos\DialogoRegistrarEmpleado.xaml.cs">
       <DependentUpon>DialogoRegistrarEmpleado.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gui\Util\ConsultasGlobales.cs" />
+    <Compile Include="Gui\Util\Datos.cs" />
     <Compile Include="Gui\Vistas\Asignatura.cs" />
     <Compile Include="Gui\Vistas\Aula.cs" />
     <Compile Include="Gui\Vistas\Carrera.cs" />
@@ -175,24 +181,33 @@
     <Compile Include="Gui\Ventanas\VentanaAdmin.xaml.cs">
       <DependentUpon>VentanaAdmin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gui\Vistas\VistaAlumno.cs" />
+    <Compile Include="Gui\Vistas\VistaDireccion.cs" />
     <Compile Include="Negocios\Casos\CasoUso.cs" />
     <Compile Include="Negocios\Casos\CasoUsoEscritura.cs" />
     <Compile Include="Negocios\Casos\CasoUsoLectura.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoAltaPersona.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarAlumnos.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarEspecialidades.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarEspecialidadesPorCarrera.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarTutores.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaAlumnos.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoRegistrarAlumno.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoSeleccionarAdmin.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarCarreras.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoSeleccionarCantidadAlumnosRegistrados.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoSeleccionarMateria.cs" />
     <Compile Include="Negocios\Presentadores\Presentador.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorAdministrador.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListaAlumnos.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListarCarreras.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListarEspecialidades.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorListarEspecialidadesPorCarrera.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListaTutores.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorMateria.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorSeleccionarCantidadAlumnosRegistrados.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorVista.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorListarVistaAlumno.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

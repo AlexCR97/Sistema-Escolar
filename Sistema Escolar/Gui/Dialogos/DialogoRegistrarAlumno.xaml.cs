@@ -1,4 +1,5 @@
 ﻿using SistemaEscolar.Entidades;
+using SistemaEscolar.Gui.Util;
 using SistemaEscolar.Negocios.Casos.Implementaciones;
 using System;
 using System.Collections.Generic;
@@ -16,14 +17,33 @@ using System.Windows.Shapes;
 
 namespace SistemaEscolar.Gui.Dialogos
 {
-    /// <summary>
-    /// Interaction logic for DialogoRegistrarAlumno.xaml
-    /// </summary>
     public partial class DialogoRegistrarAlumno : Window
     {
+        private int cantidadAlumnosRegistrados;
+
         public DialogoRegistrarAlumno()
         {
             InitializeComponent();
+
+            cantidadAlumnosRegistrados = ObtenerCantidadAlumnosRegistrados();
+
+            tbNombre.TextChanged += (s, e) => { GenerarCurp(); };
+            tbApellidoMaterno.TextChanged += (s, e) => { GenerarCurp(); GenerarCorreo(); };
+            tbApellidoPaterno.TextChanged += (s, e) => { GenerarCurp(); GenerarCorreo(); };
+
+            cbFechaAnio.SelectionChanged += (s, e) => GenerarCurp();
+            cbFechaDia.SelectionChanged += (s, e) => GenerarCurp();
+            cbFechaMes.SelectionChanged += (s, e) =>
+            {
+                cbFechaDia.ItemsSource = Util.Datos.DiasDeMes(cbFechaMes.SelectedItem.ToString());
+                GenerarCurp();
+            };
+
+            cbCarrera.SelectionChanged += (s, e) =>
+            {
+                string carrera = cbCarrera.SelectedItem.ToString();
+                LlenarEspecialidadesPorCarrera(carrera);
+            };
 
             bRegistrar.Click += (s, e) =>
             {
@@ -32,9 +52,149 @@ namespace SistemaEscolar.Gui.Dialogos
                 Close();
             };
 
+            LlenarFecha();
             LlenarCarreras();
-            LlenarEspecialidades();
+            LlenarEspecialidadesPorCarrera(cbCarrera.SelectedItem.ToString());
+            LlenarEstadosCiviles();
+            LlenarMatricula();
             LlenarTutores();
+        }
+
+        private void GenerarCorreo()
+        {
+            string apellidoP = tbApellidoPaterno.Text;
+
+            if (String.IsNullOrWhiteSpace(apellidoP))
+                return;
+
+            string apellidoM = tbApellidoMaterno.Text;
+
+            if (String.IsNullOrWhiteSpace(apellidoM))
+                return;
+
+            var hoy = DateTime.Now;
+
+            string matricula =  $"{apellidoP.ToLower()}.{apellidoM.ToLower()}.{hoy.Year.ToString().Substring(2, 2)}{cantidadAlumnosRegistrados.ToString().PadLeft(3, '0')}@itsmante.edu.mx";
+
+            tbCorreoInstitucional.Text = matricula;
+        }
+
+        private void GenerarCurp()
+        {
+            string apellidoP = tbApellidoPaterno.Text;
+
+            if (String.IsNullOrWhiteSpace(apellidoP))
+                return;
+
+            string apellidoM = tbApellidoMaterno.Text;
+
+            if (String.IsNullOrWhiteSpace(apellidoM))
+                return;
+
+            string nombre = tbNombre.Text;
+
+            if (String.IsNullOrWhiteSpace(nombre))
+                return;
+
+            string fechaDia = cbFechaDia.SelectedItem.ToString();
+
+            if (String.IsNullOrWhiteSpace(fechaDia))
+                return;
+
+            string fechaMes = cbFechaMes.SelectedItem.ToString();
+
+            if (String.IsNullOrWhiteSpace(fechaMes))
+                return;
+
+            string fechaAnio = cbFechaAnio.SelectedItem.ToString();
+
+            if (String.IsNullOrWhiteSpace(fechaAnio))
+                return;
+
+            string[] nombres = nombre.Split(' ');
+
+            char primeraLetraApellidoP = apellidoP.ToUpper()[0];
+            char primeraLetraSegundoNombre = nombres[1].ToUpper()[0];
+            char primeraLetraApellidoM = apellidoM.ToUpper()[0];
+            char primeraLetraPrimerNombre = nombres[0].ToUpper()[0];
+            string anio = fechaAnio.Substring(2, 2);
+            string mes = Util.Datos.Meses[fechaMes].ToString();
+            string dia = fechaDia;
+
+            // CARP971113HTSSMB03
+            string curp = $"{primeraLetraApellidoP}{primeraLetraSegundoNombre}{primeraLetraApellidoM}{primeraLetraPrimerNombre}{anio}{mes}{dia}HTSSMB";
+
+            tbCurp.Text = curp;
+        }
+
+        private string GenerarMatricula()
+        {
+            var hoy = DateTime.Now;
+
+            // 1601F0225
+
+            return $"{hoy.Year.ToString().Substring(2, 2)}01F{cantidadAlumnosRegistrados.ToString().PadLeft(4, '0')}";
+        }
+
+        private void LlenarFecha()
+        {
+            cbFechaMes.ItemsSource = Util.Datos.Meses.Keys.ToList<string>();
+            cbFechaMes.SelectedIndex = 0;
+
+            cbFechaDia.ItemsSource = Util.Datos.DiasDeMes(cbFechaMes.SelectedItem.ToString());
+            cbFechaDia.SelectedIndex = 0;
+
+            cbFechaAnio.ItemsSource = Util.Datos.Anios();
+            cbFechaAnio.SelectedIndex = 0;
+
+        }
+
+        private void LlenarCarreras()
+        {
+            List<Carrera> carreras = Util.ConsultasGlobales.Carreras();
+            var nombresCarreras = new List<string>();
+
+            carreras.ForEach(carrera => nombresCarreras.Add(carrera.Nombre));
+
+            cbCarrera.ItemsSource = nombresCarreras;
+            cbCarrera.SelectedIndex = 0;
+        }
+
+        private void LlenarEspecialidadesPorCarrera(string carrera)
+        {
+            List<string> especialidades = Util.ConsultasGlobales.EspecialidadesPorCarreras(carrera);
+
+            cbEspecialidad.ItemsSource = especialidades;
+            cbEspecialidad.SelectedIndex = 0;
+        }
+
+        private void LlenarEstadosCiviles()
+        {
+            cbEstadoCivil.ItemsSource = Util.Datos.EstadoCivil.Keys;
+            cbEstadoCivil.SelectedIndex = 0;
+        }
+
+        private void LlenarMatricula()
+        {
+            string matricula = GenerarMatricula();
+            tbMatricula.Text = matricula;
+        }
+
+        private void LlenarTutores()
+        {
+            List<Tutor> tutores = Util.ConsultasGlobales.Tutores();
+            var nombresTutores = new List<string>();
+
+            tutores.ForEach(tutor => nombresTutores.Add($"{tutor.Nombre} {tutor.ApellidoPaterno} {tutor.ApellidoMaterno}"));
+
+            cbTutor.ItemsSource = nombresTutores;
+            cbTutor.SelectedIndex = 0;
+        }
+
+        private int ObtenerCantidadAlumnosRegistrados()
+        {
+            var cu = new CasoUsoSeleccionarCantidadAlumnosRegistrados();
+            return cu.Ejecutar();
         }
 
         private void RegistrarPersona()
@@ -42,8 +202,8 @@ namespace SistemaEscolar.Gui.Dialogos
             string apellidoP = tbApellidoPaterno.Text;
             string apellidoM = tbApellidoMaterno.Text;
             string nombres = tbNombre.Text;
-            string fechaNac = "1997-11-13";
-            bool sexo = false;
+            string fechaNac = $"{Convert.ToInt32(cbFechaAnio.SelectedItem)}-{Util.Datos.Meses[cbFechaMes.SelectedItem.ToString()]}-{Convert.ToInt32(cbFechaDia.SelectedItem)}";
+            bool sexo = rbSexoHombre.IsChecked == true;
             string curp = tbCurp.Text;
             string telefono = tbTelefono.Text;
             string calle = "Cipres";
@@ -92,42 +252,6 @@ namespace SistemaEscolar.Gui.Dialogos
             }
 
             MessageBox.Show("Exito al registrar alumno");
-        }
-
-        private void LlenarCarreras()
-        {
-            var cu = new CasoUsoListarCarreras();
-            List<Carrera> carreras = cu.Ejecutar();
-            var nombresCarreras = new List<string>();
-
-            carreras.ForEach(carrera => nombresCarreras.Add(carrera.Nombre));
-
-            cbCarrera.ItemsSource = nombresCarreras;
-            cbCarrera.SelectedIndex = 0;
-        }
-
-        private void LlenarEspecialidades()
-        {
-            var cu = new CasoUsoListarEspecialidades();
-            List<Especialidad> especialidades = cu.Ejecutar();
-            var nombreEspecialidades = new List<string>();
-
-            especialidades.ForEach(especialidad => nombreEspecialidades.Add(especialidad.Nombre));
-
-            cbEspecialidad.ItemsSource = nombreEspecialidades;
-            cbEspecialidad.SelectedIndex = 0;
-        }
-
-        private void LlenarTutores()
-        {
-            var cu = new CasoUsoListarTutores();
-            List<Tutor> tutores = cu.Ejecutar();
-            var nombresTutores = new List<string>();
-
-            tutores.ForEach(tutor => nombresTutores.Add($"{tutor.Nombre} {tutor.ApellidoPaterno} {tutor.ApellidoMaterno}"));
-
-            cbTutor.ItemsSource = nombresTutores;
-            cbTutor.SelectedIndex = 0;
         }
     }
 }

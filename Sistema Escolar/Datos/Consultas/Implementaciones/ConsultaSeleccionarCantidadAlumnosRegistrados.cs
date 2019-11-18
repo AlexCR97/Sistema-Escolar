@@ -6,19 +6,18 @@ using System.Threading.Tasks;
 
 namespace SistemaEscolar.Datos.Consultas.Implementaciones
 {
-    public class ConsultaListarEspecialidades : Consulta
+    public class ConsultaSeleccionarCantidadAlumnosRegistrados : Consulta
     {
-        public ConsultaListarEspecialidades(params object[] args) : base(args) { }
+        public ConsultaSeleccionarCantidadAlumnosRegistrados(params object[] args) : base(args) { }
 
         protected override Dictionary<string, object> DefinirParametros(params object[] args)
         {
-
             return new Dictionary<string, object>();
         }
 
         protected override string DefinirQuery()
         {
-            return "select * from especialidades";
+            return "exec generarMatricula";
         }
     }
 }

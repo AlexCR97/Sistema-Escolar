@@ -65,8 +65,8 @@
 
                     <!--Sexo-->
                     <TextBlock Text="Sexo"/>
-                    <RadioButton Content="Hombre" Margin="0 5 0 0"/>
-                    <RadioButton Content="Mujer" Margin="0 5 0 15"/>
+                    <RadioButton x:Name="rbSexoHombre" Content="Hombre" Margin="0 5 0 0"/>
+                    <RadioButton x:Name="rbSexoMujer" Content="Mujer" Margin="0 5 0 15"/>
 
                     <!--CURP-->
                     <TextBlock Text="CURP"/>
