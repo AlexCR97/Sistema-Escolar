@@ -253,5 +253,10 @@ namespace SistemaEscolar.Gui.Dialogos
 
             MessageBox.Show("Exito al registrar alumno");
         }
+
+        private void bRegistrar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

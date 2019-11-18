@@ -9,8 +9,8 @@ namespace SistemaEscolar.Gui.Modelos
 {
     public class ModeloSeccionCarreras
     {
-        private List<Carrera> carreras = new List<Carrera>();
-        public List<Carrera> Carreras
+        private List<VistaCarrera> carreras = new List<VistaCarrera>();
+        public List<VistaCarrera> Carreras
         {
             get { return carreras; }
             set { carreras = value; }
@@ -18,16 +18,16 @@ namespace SistemaEscolar.Gui.Modelos
 
         public ModeloSeccionCarreras()
         {
-            carreras.Add(new Carrera()
-            {
-                UrlImagen = "foo",
-                Codigo = "ISC",
-                Nombre = "Ingenieria en Sistemas Computacionales",
-                Especialidad = "Administracion de Base de Datos",
-                Coordinador = "Ing. Alejandro Castillo"
-            });
+            //carreras.Add(new Carrera()
+            //{
+            //    UrlImagen = "foo",
+            //    Codigo = "ISC",
+            //    Nombre = "Ingenieria en Sistemas Computacionales",
+            //    Especialidad = "Administracion de Base de Datos",
+            //    Coordinador = "Ing. Alejandro Castillo"
+            //});
 
-            carreras.Add(new Carrera()
+            carreras.Add(new VistaCarrera()
             {
                 UrlImagen = "foo",
                 Codigo = "IGE",
@@ -36,7 +36,7 @@ namespace SistemaEscolar.Gui.Modelos
                 Coordinador = "Ing. Diana Gallegos"
             });
 
-            carreras.Add(new Carrera()
+            carreras.Add(new VistaCarrera()
             {
                 UrlImagen = "foo",
                 Codigo = "IIAS",
@@ -45,7 +45,7 @@ namespace SistemaEscolar.Gui.Modelos
                 Coordinador = "Ing. Pablo Ramirez"
             });
 
-            carreras.Add(new Carrera()
+            carreras.Add(new VistaCarrera()
             {
                 UrlImagen = "foo",
                 Codigo = "II",

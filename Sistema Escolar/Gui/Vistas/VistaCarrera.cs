@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SistemaEscolar.Gui.Vistas
 {
-    public class Carrera
+    public class VistaCarrera
     {
         public string UrlImagen { get; set; }
         public string Codigo { get; set; }
