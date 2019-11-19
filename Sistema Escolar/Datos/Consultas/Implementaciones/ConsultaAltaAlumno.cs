@@ -12,14 +12,16 @@ namespace SistemaEscolar.Datos.Consultas.Implementaciones
 
         protected override Dictionary<string, object> DefinirParametros(params object[] args)
         {
-            var values = new Dictionary<string, object>();
-            values["@matricula"] = args[0].ToString();
-            values["@nombreCarrera"] = args[1].ToString();
-            values["@paternoTutor"] = args[2].ToString();
-            values["@maternoTutor"] = args[3].ToString();
-            values["@nombresTutor"] = args[4].ToString();
-            values["@nombreEspacialidad"] = args[5].ToString();
-            values["@estatus"] = args[6].ToString();
+            var values = new Dictionary<string, object>
+            {
+                ["@matricula"] = args[0].ToString(),
+                ["@nombreCarrera"] = args[1].ToString(),
+                ["@paternoTutor"] = args[2].ToString(),
+                ["@maternoTutor"] = args[3].ToString(),
+                ["@nombresTutor"] = args[4].ToString(),
+                ["@nombreEspacialidad"] = args[5].ToString(),
+                ["@estatus"] = args[6].ToString()
+            };
 
             return values;
         }

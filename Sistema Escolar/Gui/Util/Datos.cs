@@ -57,6 +57,15 @@ namespace SistemaEscolar.Gui.Util
             "Graduado",
         };
 
+        public static readonly SortedDictionary<string, int> Miembros = new SortedDictionary<string, int>
+        {
+            ["Miembro"] = 1,
+            ["Vocal2"] = 2,
+            ["Vocal1"] = 3,
+            ["Secretario"] = 4,
+            ["Presidente"] = 5,
+        };
+
         public static List<int> Anios()
         {
             var anios = new List<int>();

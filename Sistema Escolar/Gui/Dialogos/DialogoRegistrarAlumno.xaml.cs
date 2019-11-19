@@ -81,6 +81,8 @@ namespace SistemaEscolar.Gui.Dialogos
 
         private void GenerarCurp()
         {
+            return;
+
             string apellidoP = tbApellidoPaterno.Text;
 
             if (String.IsNullOrWhiteSpace(apellidoP))
@@ -146,7 +148,6 @@ namespace SistemaEscolar.Gui.Dialogos
 
             cbFechaAnio.ItemsSource = Util.Datos.Anios();
             cbFechaAnio.SelectedIndex = 0;
-
         }
 
         private void LlenarCarreras()
@@ -248,10 +249,12 @@ namespace SistemaEscolar.Gui.Dialogos
             if (!exito)
             {
                 MessageBox.Show("Error al registrar alumno");
+                DialogResult = false;
                 return;
             }
 
             MessageBox.Show("Exito al registrar alumno");
+            DialogResult = true;
         }
     }
 }

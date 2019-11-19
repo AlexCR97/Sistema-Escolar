@@ -100,5 +100,53 @@ namespace SistemaEscolar.Gui.Util
             tutores.AddRange(tutoresTemp);
         }
         #endregion
+
+        #region Empleos
+        private static List<Empleos> empleos;
+
+        public static List<Empleos> Empleos()
+        {
+            if (empleos == null)
+                empleos = new CasoUsoListarEmpleos().Ejecutar();
+
+            return empleos;
+        }
+
+        public static void ActualizarEmpleos()
+        {
+            List<Empleos> empleosTemp = new CasoUsoListarEmpleos().Ejecutar();
+
+            if (empleosTemp == null)
+                return;
+
+            empleos = new List<Empleos>();
+            empleos.AddRange(empleosTemp);
+        }
+        #endregion
+
+        #region Academias
+        private static List<Academia> academias;
+
+        public static List<Academia> Academias
+        {
+            get {
+                if (academias == null)
+                    academias = new CasoUsoListarAcademias().Ejecutar();
+
+                return academias;
+            }
+        }
+
+        public static void ActualizarAcademias()
+        {
+            List<Academia> academiasTemp = new CasoUsoListarAcademias().Ejecutar();
+
+            if (academiasTemp == null)
+                return;
+
+            academias = new List<Academia>();
+            academias.AddRange(academiasTemp);
+        }
+        #endregion
     }
 }

@@ -27,15 +27,9 @@ namespace SistemaEscolar.Gui.Secciones
         {
             InitializeComponent();
 
-            bRegistrarAlumno.Click += (s, e) =>
-            {
-                RegistrarAlumno();
-            };
+            bRegistrarAlumno.Click += (s, e) => RegistrarAlumno();
 
-            dgAlumnos.MouseLeftButtonUp += (s, e) =>
-            {
-                LlenarDatosAlumno();
-            };
+            dgAlumnos.MouseLeftButtonUp += (s, e) => LlenarDatosAlumno();
 
             LlenarTablaAlumnos();
             LlenarFiltros();
@@ -44,7 +38,10 @@ namespace SistemaEscolar.Gui.Secciones
         private void RegistrarAlumno()
         {
             var dialogo = new DialogoRegistrarAlumno();
-            dialogo.Show();
+            dialogo.ShowDialog();
+
+            if (dialogo.DialogResult == true)
+                LlenarTablaAlumnos();
         }
 
         private void LlenarTablaAlumnos()
