@@ -105,14 +105,17 @@
     </Compile>
     <Compile Include="Datos\Conexion.cs" />
     <Compile Include="Datos\Consultas\Consulta.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaAltaCarrera.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarAlumnos.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaAltaAlumno.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaAltaMateria.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaAltaPersona.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarCoordinadores.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarEspecialidades.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarEspecialidadesPorCarrera.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarTutores.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistaAlumnos.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistaCarreras.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarAdmin.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarCarreras.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarCantidadAlumnosRegistrados.cs" />
@@ -121,6 +124,7 @@
     <Compile Include="Entidades\Administrador.cs" />
     <Compile Include="Entidades\Alumno.cs" />
     <Compile Include="Entidades\Carrera.cs" />
+    <Compile Include="Entidades\Coordinardor.cs" />
     <Compile Include="Entidades\Especialidad.cs" />
     <Compile Include="Entidades\Materia.cs" />
     <Compile Include="Entidades\Persona.cs" />
@@ -141,7 +145,7 @@
     <Compile Include="Gui\Util\Datos.cs" />
     <Compile Include="Gui\Vistas\Asignatura.cs" />
     <Compile Include="Gui\Vistas\Aula.cs" />
-    <Compile Include="Gui\Vistas\Carrera.cs" />
+    <Compile Include="Gui\Vistas\VistaCarrera.cs" />
     <Compile Include="Gui\Vistas\Horario.cs" />
     <Compile Include="Gui\Vistas\Materia.cs" />
     <Compile Include="Gui\Modelos\ModeloSeccionAlumnos.cs" />
@@ -188,11 +192,14 @@
     <Compile Include="Negocios\Casos\CasoUsoLectura.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoAltaPersona.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarAlumnos.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarCoordinadores.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarEspecialidades.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarEspecialidadesPorCarrera.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarTutores.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaAlumnos.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaCarreras.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoRegistrarAlumno.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoRegistrarCarrera.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoSeleccionarAdmin.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarCarreras.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoSeleccionarCantidadAlumnosRegistrados.cs" />
@@ -200,10 +207,12 @@
     <Compile Include="Negocios\Presentadores\Presentador.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorAdministrador.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListaAlumnos.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorListaCoordinadores.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListarCarreras.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListarEspecialidades.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListarEspecialidadesPorCarrera.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListaTutores.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorListaVistaCarreras.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorMateria.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorSeleccionarCantidadAlumnosRegistrados.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorVista.cs" />

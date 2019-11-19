@@ -36,14 +36,11 @@ namespace SistemaEscolar.Gui.Secciones
 
         private void LlenarListaCarreras()
         {
-            var cuCarreras = new CasoUsoListarCarreras();
-            //var carreras = cuCarreras.Ejecutar();
+            //var cuVistasCarreras = new CasoUsoListarVistaCarreras();
+            //var vistasCarreras = cuVistasCarreras.Ejecutar();
 
-            var cuVistasCarreras = new CasoUsoListarVistaCarreras();
-            var vistasCarreras = cuVistasCarreras.Ejecutar();
-
-            var carreras = new List<Carrera>();
-            carreras.Add(new Carrera()
+            var carreras = new List<VistaCarrera>();
+            carreras.Add(new VistaCarrera()
             {
                 UrlImagen = "foo",
                 Codigo = "ISC",

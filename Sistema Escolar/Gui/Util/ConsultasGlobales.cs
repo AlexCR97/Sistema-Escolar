@@ -100,5 +100,19 @@ namespace SistemaEscolar.Gui.Util
             tutores.AddRange(tutoresTemp);
         }
         #endregion
+
+        #region Coordinadores
+
+        private static List<Coordinardor> coordinadores;
+
+        public static List<Coordinardor> Coordinadores()
+        {
+            if (coordinadores == null)
+                coordinadores = new CasoUsoListarCoordinadores().Ejecutar();
+
+            return coordinadores;
+        }
+
+        #endregion 
     }
 }

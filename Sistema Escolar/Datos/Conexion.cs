@@ -18,10 +18,10 @@ namespace SistemaEscolar.Datos
 
         public Conexion()
         {
-            servidor = "localhost\\SQLEXPRESSMIRROR";
+            servidor = "localhost//TECMANTE";
             baseDatos = "BDTEC";
             usuario = "sa";
-            contrasena = "Carp1997";
+            contrasena = "sa1234";
 
             string cadenaConexion = CadenaConexion();
             conexion = new SqlConnection(cadenaConexion);
