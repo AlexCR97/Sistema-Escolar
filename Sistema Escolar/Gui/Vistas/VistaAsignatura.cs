@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SistemaEscolar.Gui.Vistas
 {
-    public class Asignatura
+    public class VistaAsignatura
     {
         public string Materia { get; set; }
         public string Profesor { get; set; }

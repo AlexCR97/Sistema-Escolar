@@ -9,8 +9,8 @@ namespace SistemaEscolar.Gui.Modelos
 {
     public class ModeloSeccionHorarios
     {
-        private List<Horario> horarios = new List<Horario>();
-        public List<Horario> Horarios
+        private List<VistaHorario> horarios = new List<VistaHorario>();
+        public List<VistaHorario> Horarios
         {
             get { return horarios; }
             set { horarios = value; }
@@ -19,7 +19,7 @@ namespace SistemaEscolar.Gui.Modelos
         public ModeloSeccionHorarios()
         {
             for (int i = 0; i < 20; i++)
-                Horarios.Add(new Horario()
+                Horarios.Add(new VistaHorario()
                 {
                     Hora = i.ToString(),
                 });

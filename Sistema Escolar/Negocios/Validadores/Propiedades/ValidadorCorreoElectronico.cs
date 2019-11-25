@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SistemaEscolar.Gui.Vistas
+namespace SistemaEscolar.Negocios.Validadores.Propiedades
 {
-    public class Horario
+    public class ValidadorCorreoElectronico
     {
-        public string Hora { get; set; }
     }
 }

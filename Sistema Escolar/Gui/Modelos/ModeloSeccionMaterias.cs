@@ -9,8 +9,8 @@ namespace SistemaEscolar.Gui.Modelos
 {
     public class ModeloSeccionMaterias
     {
-        private List<Materia> materias = new List<Materia>();
-        public List<Materia> Materias
+        private List<VistaMateria> materias = new List<VistaMateria>();
+        public List<VistaMateria> Materias
         {
             get { return materias; }
             set { materias = value; }
@@ -20,7 +20,7 @@ namespace SistemaEscolar.Gui.Modelos
         {
             for (int i = 1; i <= 20; i++)
             {
-                Materias.Add(new Materia()
+                Materias.Add(new VistaMateria()
                 {
                     Codigo = i.ToString(),
                     Nombre = i.ToString(),

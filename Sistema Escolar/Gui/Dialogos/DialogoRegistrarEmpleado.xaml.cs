@@ -1,4 +1,5 @@
 ﻿using SistemaEscolar.Entidades;
+using SistemaEscolar.Gui.Util;
 using SistemaEscolar.Negocios.Casos.Implementaciones;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace SistemaEscolar.Gui.Dialogos
             InitializeComponent();
 
             LlenarAcademias();
+            LlenarDireccion();
             LlenarFecha();
             LlenarEstadosCiviles();
             LlenarMiembros();
@@ -46,6 +48,34 @@ namespace SistemaEscolar.Gui.Dialogos
 
             cbAcademias.ItemsSource = nombresAcademias;
             cbAcademias.SelectedIndex = 0;
+        }
+
+        private void LlenarDireccion()
+        {
+            var ubicaciones = ConsultasGlobales.VistasUbicaciones;
+
+            var calles = new List<string>();
+            var colonias = new List<string>();
+            var ciudades = new List<string>();
+            var estados = new List<string>();
+
+            ubicaciones.ForEach(ubicacion =>
+            {
+                calles.Add(ubicacion.NombreCalle);
+                colonias.Add(ubicacion.NombreLocalidad);
+                ciudades.Add(ubicacion.NombreMunicipio);
+                estados.Add(ubicacion.NombreEstado);
+            });
+
+            cbCalle.ItemsSource = calles.Distinct().ToList();
+            cbColonia.ItemsSource = colonias.Distinct().ToList();
+            cbCiudad.ItemsSource = ciudades.Distinct().ToList();
+            cbEstado.ItemsSource = estados.Distinct().ToList();
+
+            cbCalle.SelectedIndex = 0;
+            cbColonia.SelectedIndex = 0;
+            cbCiudad.SelectedIndex = 0;
+            cbEstado.SelectedIndex = 0;
         }
 
         private void LlenarFecha()

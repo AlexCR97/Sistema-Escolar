@@ -9,15 +9,15 @@ namespace SistemaEscolar.Gui.Modelos
 {
     public class ModeloSeccionAulas
     {
-        private List<Aula> aulas = new List<Aula>();
-        public List<Aula> Aulas
+        private List<VistaAula> aulas = new List<VistaAula>();
+        public List<VistaAula> Aulas
         {
             get { return aulas; }
             set { aulas = value; }
         }
 
-        private List<Asignatura> asignaturas = new List<Asignatura>();
-        public List<Asignatura> Asignaturas
+        private List<VistaAsignatura> asignaturas = new List<VistaAsignatura>();
+        public List<VistaAsignatura> Asignaturas
         {
             get { return asignaturas; }
             set { asignaturas = value; }
@@ -27,7 +27,7 @@ namespace SistemaEscolar.Gui.Modelos
         {
             for (int i = 1; i <= 20; i++)
             {
-                Aulas.Add(new Aula()
+                Aulas.Add(new VistaAula()
                 {
                     Edificio = i,
                     Planta = i,
@@ -38,7 +38,7 @@ namespace SistemaEscolar.Gui.Modelos
 
             for (int i = 1; i <= 20; i++)
             {
-                Asignaturas.Add(new Asignatura()
+                Asignaturas.Add(new VistaAsignatura()
                 {
                     Materia = i.ToString(),
                     Profesor = i.ToString(),

@@ -118,6 +118,7 @@
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarEspecialidadesPorCarrera.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarTutores.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistaAlumnos.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistasUbicaciones.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarAdmin.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarCarreras.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarCantidadAlumnosRegistrados.cs" />
@@ -146,11 +147,11 @@
     </Compile>
     <Compile Include="Gui\Util\ConsultasGlobales.cs" />
     <Compile Include="Gui\Util\Datos.cs" />
-    <Compile Include="Gui\Vistas\Asignatura.cs" />
-    <Compile Include="Gui\Vistas\Aula.cs" />
-    <Compile Include="Gui\Vistas\Carrera.cs" />
-    <Compile Include="Gui\Vistas\Horario.cs" />
-    <Compile Include="Gui\Vistas\Materia.cs" />
+    <Compile Include="Gui\Vistas\VistaAsignatura.cs" />
+    <Compile Include="Gui\Vistas\VistaAula.cs" />
+    <Compile Include="Gui\Vistas\VistaCarrera.cs" />
+    <Compile Include="Gui\Vistas\VistaHorario.cs" />
+    <Compile Include="Gui\Vistas\VistaMateria.cs" />
     <Compile Include="Gui\Modelos\ModeloSeccionAlumnos.cs" />
     <Compile Include="Gui\Modelos\ModeloSeccionAulas.cs" />
     <Compile Include="Gui\Modelos\ModeloSeccionCarreras.cs" />
@@ -191,6 +192,7 @@
     <Compile Include="Gui\Vistas\VistaAlumno.cs" />
     <Compile Include="Gui\Vistas\VistaDireccion.cs" />
     <Compile Include="Gui\Vistas\VistaEmpleados.cs" />
+    <Compile Include="Gui\Vistas\VistaUbicacion.cs" />
     <Compile Include="Negocios\Casos\CasoUso.cs" />
     <Compile Include="Negocios\Casos\CasoUsoEscritura.cs" />
     <Compile Include="Negocios\Casos\CasoUsoLectura.cs" />
@@ -205,6 +207,7 @@
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarTutores.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaAlumnos.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaEmpleados.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaUbicaciones.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoRegistrarAlumno.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoSeleccionarAdmin.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarCarreras.cs" />
@@ -224,6 +227,7 @@
     <Compile Include="Negocios\Presentadores\PresentadorSeleccionarCantidadAlumnosRegistrados.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorVista.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListarVistaAlumno.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorListarVistaUbicacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -1,4 +1,5 @@
 ﻿using SistemaEscolar.Entidades;
+using SistemaEscolar.Gui.Vistas;
 using SistemaEscolar.Negocios.Casos.Implementaciones;
 using System;
 using System.Collections.Generic;
@@ -146,6 +147,20 @@ namespace SistemaEscolar.Gui.Util
 
             academias = new List<Academia>();
             academias.AddRange(academiasTemp);
+        }
+        #endregion
+
+        #region Vistas Ubicaciones
+        private static List<VistaUbicacion> vistasUbicaciones;
+
+        public static List<VistaUbicacion> VistasUbicaciones
+        {
+            get {
+                if (vistasUbicaciones == null)
+                    vistasUbicaciones = new CasoUsoListarVistaUbicaciones().Ejecutar();
+
+                return vistasUbicaciones;
+            }
         }
         #endregion
     }
