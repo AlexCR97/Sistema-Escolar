@@ -123,6 +123,7 @@
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarCarreras.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarCantidadAlumnosRegistrados.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarMateria.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarVistaDetallesAlumnos.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarVistaDireccionPersona.cs" />
     <Compile Include="Entidades\Academia.cs" />
     <Compile Include="Entidades\Administrador.cs" />
@@ -145,11 +146,13 @@
     <Compile Include="Gui\Dialogos\DialogoRegistrarEmpleado.xaml.cs">
       <DependentUpon>DialogoRegistrarEmpleado.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gui\Dialogos\TipoOperacion.cs" />
     <Compile Include="Gui\Util\ConsultasGlobales.cs" />
     <Compile Include="Gui\Util\Datos.cs" />
     <Compile Include="Gui\Vistas\VistaAsignatura.cs" />
     <Compile Include="Gui\Vistas\VistaAula.cs" />
     <Compile Include="Gui\Vistas\VistaCarrera.cs" />
+    <Compile Include="Gui\Vistas\VistaDetallesAlumno.cs" />
     <Compile Include="Gui\Vistas\VistaHorario.cs" />
     <Compile Include="Gui\Vistas\VistaMateria.cs" />
     <Compile Include="Gui\Modelos\ModeloSeccionAlumnos.cs" />
@@ -213,6 +216,7 @@
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarCarreras.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoSeleccionarCantidadAlumnosRegistrados.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoSeleccionarMateria.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoSeleccionarVistaDetallesAlumno.cs" />
     <Compile Include="Negocios\Presentadores\Presentador.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorAdministrador.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListaAcademias.cs" />
@@ -228,6 +232,15 @@
     <Compile Include="Negocios\Presentadores\PresentadorVista.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListarVistaAlumno.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListarVistaUbicacion.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorVistaDetallesAlumno.cs" />
+    <Compile Include="Negocios\Validadores\Propiedades\ValidadorCorreoElectronico.cs" />
+    <Compile Include="Negocios\Validadores\Propiedades\ValidadorCurp.cs" />
+    <Compile Include="Negocios\Validadores\Propiedades\ValidadorFecha.cs" />
+    <Compile Include="Negocios\Validadores\Propiedades\ValidadorMatriculaAlumno.cs" />
+    <Compile Include="Negocios\Validadores\Propiedades\ValidadorNumeroString.cs" />
+    <Compile Include="Negocios\Validadores\Propiedades\ValidadorStringNoVacio.cs" />
+    <Compile Include="Negocios\Validadores\Propiedades\ValidadorTelefono.cs" />
+    <Compile Include="Negocios\Validadores\Validador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -254,7 +267,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Negocios\Validadores\" />
+    <Folder Include="Negocios\Validadores\Entidades\" />
+    <Folder Include="Negocios\Validadores\Vistas\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

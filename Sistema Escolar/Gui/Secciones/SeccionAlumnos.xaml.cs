@@ -2,6 +2,7 @@
 using SistemaEscolar.Gui.Dialogos;
 using SistemaEscolar.Gui.Vistas;
 using SistemaEscolar.Negocios.Casos.Implementaciones;
+using SistemaEscolar.Negocios.Validadores.Propiedades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,8 @@ namespace SistemaEscolar.Gui.Secciones
         {
             InitializeComponent();
 
+            bEditarAlumno.Click += (s, e) => EditarAlumno();
+
             bRegistrarAlumno.Click += (s, e) => RegistrarAlumno();
 
             dgAlumnos.MouseLeftButtonUp += (s, e) => LlenarDatosAlumno();
@@ -35,9 +38,25 @@ namespace SistemaEscolar.Gui.Secciones
             LlenarFiltros();
         }
 
+        private void EditarAlumno()
+        {
+            string matricula = (dgAlumnos.SelectedItem as VistaAlumno).Matricula;
+
+            var validador = new ValidadorMatriculaAlumno(matricula);
+
+            if (!validador.Validar())
+            {
+                MessageBox.Show(validador.UltimoError());
+                return;
+            }
+
+            var dialogo = new DialogoRegistrarAlumno(TipoOperacion.Editar, matricula);
+            dialogo.ShowDialog();
+        }
+
         private void RegistrarAlumno()
         {
-            var dialogo = new DialogoRegistrarAlumno();
+            var dialogo = new DialogoRegistrarAlumno(TipoOperacion.Registrar, null);
             dialogo.ShowDialog();
 
             if (dialogo.DialogResult == true)

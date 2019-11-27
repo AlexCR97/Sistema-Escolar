@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace SistemaEscolar.Negocios.Validadores.Propiedades
 {
-    public class ValidadorStringNoVacio : Validador<string>
+    public class ValidadorCurp : Validador<string>
     {
-        public ValidadorStringNoVacio(string propiedad) : base(propiedad) { }
+        public ValidadorCurp(string propiedad) : base(propiedad) { }
 
         protected override void DefinirValidaciones()
         {
-            AgregarValidacion(() => !String.IsNullOrWhiteSpace(Propiedad), () => "El valor no puede ser vacio");
+            AgregarValidacion(() => Propiedad.Length == 18, () => "La curp debe de tener 18 caracteres");
         }
     }
 }

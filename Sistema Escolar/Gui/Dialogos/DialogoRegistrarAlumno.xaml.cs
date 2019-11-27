@@ -1,6 +1,9 @@
 ﻿using SistemaEscolar.Entidades;
 using SistemaEscolar.Gui.Util;
+using SistemaEscolar.Gui.Vistas;
 using SistemaEscolar.Negocios.Casos.Implementaciones;
+using SistemaEscolar.Negocios.Validadores;
+using SistemaEscolar.Negocios.Validadores.Propiedades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +24,22 @@ namespace SistemaEscolar.Gui.Dialogos
     {
         private int cantidadAlumnosRegistrados;
 
-        public DialogoRegistrarAlumno()
+        public TipoOperacion TipoOperacion { get; set; }
+
+        public DialogoRegistrarAlumno(TipoOperacion tipoOperacion, string matricula)
         {
             InitializeComponent();
+
+            TipoOperacion = tipoOperacion;
+
+            // llenar datos
+            if (TipoOperacion == TipoOperacion.Editar)
+            {
+                if (matricula != null)
+                {
+                    LlenarDatosDetallesAlumno(matricula);
+                }
+            }
 
             cantidadAlumnosRegistrados = ObtenerCantidadAlumnosRegistrados();
 
@@ -47,8 +63,39 @@ namespace SistemaEscolar.Gui.Dialogos
 
             bRegistrar.Click += (s, e) =>
             {
-                RegistrarPersona();
-                RegistrarAlumno();
+                switch (TipoOperacion)
+                {
+                    case TipoOperacion.Registrar:
+                    {
+                        if (!ValidarDatosPersona())
+                            return;
+
+                        if (!ValidarDatosAlumno())
+                            return;
+
+                        if (!RegistrarPersona())
+                            return;
+
+                        if (!RegistrarAlumno())
+                            return;
+
+                        break;
+                    }
+
+                    case TipoOperacion.Editar:
+                    {
+                        if (!ValidarDatosPersona())
+                            return;
+
+                        if (!ValidarDatosAlumno())
+                            return;
+
+
+
+                        break;
+                    }
+                }
+
                 Close();
             };
 
@@ -139,6 +186,48 @@ namespace SistemaEscolar.Gui.Dialogos
             return $"{hoy.Year.ToString().Substring(2, 2)}01F{cantidadAlumnosRegistrados.ToString().PadLeft(4, '0')}";
         }
 
+        private void LlenarDatosDetallesAlumno(string matricula)
+        {
+            var cu = new CasoUsoSeleccionarVistaDetallesAlumno();
+            VistaDetallesAlumno vista = cu.Ejecutar(matricula);
+
+            if (vista == null)
+            {
+                MessageBox.Show("Error fatal. Codigo ALVT02");
+                return;
+            }
+
+            tbNombre.Text = vista.Nombre;
+            tbApellidoPaterno.Text = vista.ApellidoPaterno;
+            tbApellidoMaterno.Text = vista.ApellidoMaterno;
+
+            string fechaCorta = DateTime.Parse(vista.FechaNacimiento).ToShortDateString();
+            string[] tokensFecha = fechaCorta.Split('/');
+
+            //MessageBox.Show(String.Join(" , ", tokensFecha));
+
+            cbFechaDia.SelectedItem = int.Parse(tokensFecha[1]);
+            cbFechaMes.SelectedIndex = int.Parse(tokensFecha[0]);
+            cbFechaAnio.SelectedItem = int.Parse(tokensFecha[2]);
+
+            rbSexoHombre.IsChecked = vista.Sexo;
+            tbCurp.Text = vista.Curp;
+            tbTelefono.Text = vista.Telefono;
+            cbEstadoCivil.SelectedIndex = vista.EstadoCivil;
+            tbCodigoPostal.Text = vista.CodigoPostal.ToString();
+            cbCalle.SelectedItem = vista.Calle;
+            tbNumeroExterior.Text = vista.NumeroExterior.ToString();
+            tbNumeroInterior.Text = vista.NumeroInterior.ToString();
+            cbColonia.SelectedItem = vista.Localidad;
+            cbCiudad.SelectedItem = vista.Municipio;
+            cbEstado.SelectedItem = vista.Estado;
+            tbMatricula.Text = vista.Matricula;
+            tbCorreoInstitucional.Text = "correo";
+            cbEspecialidad.SelectedItem = vista.Esepcialidad;
+            tbGrupo.Text = "";
+            cbTutor.SelectedItem = $"{vista.NombreTutor} {vista.ApellidoPaternoTutor} {vista.ApellidoMaternoTutor}";
+        }
+
         private void LlenarFecha()
         {
             cbFechaMes.ItemsSource = Util.Datos.Meses.Keys.ToList<string>();
@@ -227,7 +316,7 @@ namespace SistemaEscolar.Gui.Dialogos
             return cu.Ejecutar();
         }
 
-        private void RegistrarPersona()
+        private bool RegistrarPersona()
         {
             string apellidoP = tbApellidoPaterno.Text;
             string apellidoM = tbApellidoMaterno.Text;
@@ -236,35 +325,46 @@ namespace SistemaEscolar.Gui.Dialogos
             bool sexo = rbSexoHombre.IsChecked == true;
             string curp = tbCurp.Text;
             string telefono = tbTelefono.Text;
-            string calle = "Cipres";
-            int numExt = Convert.ToInt32(tbNumeroExterior.Text);
-            int numInt = Convert.ToInt32(tbNumeroInterior.Text);
-            int codigoPostal = Convert.ToInt32(tbCodigoPostal.Text);
+            string calle = cbCalle.SelectedItem.ToString();
+            string numExt = tbNumeroExterior.Text;
+            string numInt = tbNumeroInterior.Text;
+            string codigoPostal = tbCodigoPostal.Text;
             int edoCivil = 1;
             int discapacidad = 1;
 
             var cu = new CasoUsoAltaPersona();
 
-            bool exito = cu.Ejecutar(apellidoP, apellidoM, nombres, fechaNac, sexo, curp, telefono, calle, numExt, numInt, codigoPostal, edoCivil, discapacidad);
+            bool exito = cu.Ejecutar(
+                apellidoP,
+                apellidoM,
+                nombres,
+                fechaNac,
+                sexo,
+                curp,
+                telefono,
+                calle,
+                int.Parse(numExt),
+                int.Parse(numInt),
+                int.Parse(codigoPostal),
+                edoCivil,
+                discapacidad
+            );
 
             if (!exito)
             {
                 MessageBox.Show("Error al registrar persona");
-                return;
+                return false;
             }
 
-            MessageBox.Show("Exito al registrar persona");
+            return true;
         }
 
-        private void RegistrarAlumno()
+        private bool RegistrarAlumno()
         {
             var tutorSeleccionado = cbTutor.SelectedItem.ToString().Split(' ');
 
             string matricula = tbMatricula.Text;
             string carrera = cbCarrera.SelectedItem.ToString();
-            //string tutorApellidoP = "Muñoz";
-            //string tutorApellidoM = "Meza";
-            //string tutorNombre = "Cristian";
             string tutorApellidoP = tutorSeleccionado[1];
             string tutorApellidoM = tutorSeleccionado[2];
             string tutorNombre = tutorSeleccionado[0];
@@ -279,11 +379,86 @@ namespace SistemaEscolar.Gui.Dialogos
             {
                 MessageBox.Show("Error al registrar alumno");
                 DialogResult = false;
-                return;
+                return false;
             }
 
             MessageBox.Show("Exito al registrar alumno");
             DialogResult = true;
+
+            return true;
+        }
+
+        private bool ValidarDatosPersona()
+        {
+            string apellidoP = tbApellidoPaterno.Text;
+            string apellidoM = tbApellidoMaterno.Text;
+            string nombres = tbNombre.Text;
+            string fechaNac = $"{Convert.ToInt32(cbFechaAnio.SelectedItem)}-{Util.Datos.Meses[cbFechaMes.SelectedItem.ToString()]}-{Convert.ToInt32(cbFechaDia.SelectedItem)}";
+            bool sexo = rbSexoHombre.IsChecked == true;
+            string curp = tbCurp.Text;
+            string telefono = tbTelefono.Text;
+            string calle = cbCalle.SelectedItem.ToString();
+            string numExt = tbNumeroExterior.Text;
+            string numInt = tbNumeroInterior.Text;
+            string codigoPostal = tbCodigoPostal.Text;
+
+            var validadores = new List<Validador<string>>()
+            {
+                new ValidadorStringNoVacio(apellidoP),
+                new ValidadorStringNoVacio(apellidoM),
+                new ValidadorStringNoVacio(nombres),
+                new ValidadorFecha(fechaNac),
+                new ValidadorCurp(curp),
+                new ValidadorTelefono(telefono),
+                new ValidadorStringNoVacio(calle),
+                new ValidadorNumeroString(numExt),
+                new ValidadorNumeroString(numInt),
+                new ValidadorNumeroString(codigoPostal),
+            };
+
+            foreach (Validador<string> validador in validadores)
+            {
+                if (!validador.Validar())
+                {
+                    MessageBox.Show(validador.UltimoError(), "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private bool ValidarDatosAlumno()
+        {
+            var tutorSeleccionado = cbTutor.SelectedItem.ToString().Split(' ');
+
+            string matricula = tbMatricula.Text;
+            string carrera = cbCarrera.SelectedItem.ToString();
+            string tutorApellidoP = tutorSeleccionado[1];
+            string tutorApellidoM = tutorSeleccionado[2];
+            string tutorNombre = tutorSeleccionado[0];
+            string especialidad = cbEspecialidad.SelectedItem.ToString();
+
+            var validadores = new List<Validador<string>>()
+            {
+                new ValidadorMatriculaAlumno(matricula),
+                new ValidadorStringNoVacio(carrera),
+                new ValidadorStringNoVacio(tutorApellidoP),
+                new ValidadorStringNoVacio(tutorApellidoM),
+                new ValidadorStringNoVacio(tutorNombre),
+                new ValidadorStringNoVacio(especialidad),
+            };
+
+            foreach (Validador<string> validador in validadores)
+            {
+                if (!validador.Validar())
+                {
+                    MessageBox.Show(validador.UltimoError(), "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

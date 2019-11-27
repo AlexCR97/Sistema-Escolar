@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SistemaEscolar.Negocios.Validadores.Propiedades
 {
-    public class ValidadorFecha : Validador<string>
+    public class ValidadorTelefono : Validador<string>
     {
-        public ValidadorFecha(string propiedad) : base(propiedad) { }
+        public ValidadorTelefono(string propiedad) : base(propiedad) { }
 
         protected override void DefinirValidaciones()
         {
@@ -16,11 +16,10 @@ namespace SistemaEscolar.Negocios.Validadores.Propiedades
             {
                 try
                 {
-                    string[] tokens = Propiedad.Split('-');
-                    
-                    Int32.Parse(tokens[0]);
-                    Int32.Parse(tokens[1]);
-                    Int32.Parse(tokens[2]);
+                    if (Propiedad.Length != 10)
+                        return false;
+
+                    long.Parse(Propiedad);
 
                     return true;
                 }
@@ -28,7 +27,7 @@ namespace SistemaEscolar.Negocios.Validadores.Propiedades
                 {
                     return false;
                 }
-            }, () => "La fecha debe de tener el siguiente formato: AAAA-DD-MM");
+            }, () => "El telefono debe de tener solamente 10 digitos");
         }
     }
 }

@@ -20,12 +20,15 @@ namespace SistemaEscolar.Negocios.Validadores
         protected Validador(T propiedad)
         {
             Propiedad = propiedad;
+            DefinirValidaciones();
         }
 
         protected abstract void DefinirValidaciones();
 
         protected void AgregarValidacion(ValidadorPropiedad validadorPropiedad, MensajeError mensajeError)
         {
+            Console.WriteLine("VALIDADOR AGREGADO");
+
             (Validaciones as List<ValidadorPropiedad>).Add(validadorPropiedad);
 
             if (mensajeError != null)
@@ -36,11 +39,9 @@ namespace SistemaEscolar.Negocios.Validadores
 
         public bool Validar()
         {
-            bool resultado = true;
-
-            (Validaciones as List<ValidadorPropiedad>).ForEach(validador =>
+            foreach (ValidadorPropiedad validador in Validaciones)
             {
-                if (!validador())
+                if (!validador.Invoke())
                 {
                     MensajeError mensajeError = Errores[validador];
 
@@ -49,12 +50,10 @@ namespace SistemaEscolar.Negocios.Validadores
                         UltimoError = mensajeError;
                     }
 
-                    resultado = false;
-                    return;
+                    return false;
                 }
-            });
-
-            return resultado;
+            }
+            return true;
         }
     }
 }

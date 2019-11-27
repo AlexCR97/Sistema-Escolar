@@ -1,6 +1,8 @@
 ﻿using SistemaEscolar.Entidades;
 using SistemaEscolar.Gui.Util;
 using SistemaEscolar.Negocios.Casos.Implementaciones;
+using SistemaEscolar.Negocios.Validadores;
+using SistemaEscolar.Negocios.Validadores.Propiedades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,9 +34,24 @@ namespace SistemaEscolar.Gui.Dialogos
 
             bRegistrar.Click += (s, e) =>
             {
-                RegistrarPersona();
-                RegistrarEmpleado();
-                RegistrarProfesor();
+                if (!ValidarDatosPersona())
+                    return;
+
+                if (!ValidarDatosEmpleado())
+                    return;
+
+                if (!ValidarDatosProfesor())
+                    return;
+
+                if (!RegistrarPersona())
+                    return;
+
+                if (!RegistrarEmpleado())
+                    return;
+
+                if (!RegistrarProfesor())
+                    return;
+
                 Close();
             };
         }
@@ -113,7 +130,7 @@ namespace SistemaEscolar.Gui.Dialogos
             cbPuestos.SelectedIndex = 0;
         }
 
-        private void RegistrarPersona()
+        private bool RegistrarPersona()
         {
             string apellidoP = tbApellidoPaterno.Text;
             string apellidoM = tbApellidoMaterno.Text;
@@ -123,26 +140,28 @@ namespace SistemaEscolar.Gui.Dialogos
             string curp = tbCurp.Text;
             string telefono = tbTelefono.Text;
             string calle = "Cipres";
-            int numExt = Convert.ToInt32(tbNumeroExterior.Text);
-            int numInt = Convert.ToInt32(tbNumeroInterior.Text);
-            int codigoPostal = Convert.ToInt32(tbCodigoPostal.Text);
+            string numExt = tbNumeroExterior.Text;
+            string numInt = tbNumeroInterior.Text;
+            string codigoPostal = tbCodigoPostal.Text;
             int edoCivil = 1;
             int discapacidad = 1;
 
             var cu = new CasoUsoAltaPersona();
 
-            bool exito = cu.Ejecutar(apellidoP, apellidoM, nombres, fechaNac, sexo, curp, telefono, calle, numExt, numInt, codigoPostal, edoCivil, discapacidad);
+            bool exito = cu.Ejecutar(apellidoP, apellidoM, nombres, fechaNac, sexo, curp, telefono, calle, int.Parse(numExt), int.Parse(numInt), int.Parse(codigoPostal), edoCivil, discapacidad);
 
             if (!exito)
             {
                 MessageBox.Show("Error al registrar persona");
-                return;
+                return false;
             }
 
             MessageBox.Show("Exito al registrar persona");
+
+            return true;
         }
 
-        public void RegistrarEmpleado()
+        public bool RegistrarEmpleado()
         {
             string puestoSeleccionado = cbPuestos.SelectedItem.ToString();
             int idEmplo = -1;
@@ -164,13 +183,15 @@ namespace SistemaEscolar.Gui.Dialogos
             if (!exito)
             {
                 MessageBox.Show("Error al registrar empleado");
-                return;
+                return false; ;
             }
 
             MessageBox.Show("Exito al registrar empleado");
+
+            return true;
         }
 
-        public void RegistrarProfesor()
+        public bool RegistrarProfesor()
         {
             string idProfesor = tbIdProfesor.Text;
             int idAcademia = -1;
@@ -178,7 +199,7 @@ namespace SistemaEscolar.Gui.Dialogos
 
             // encontrar id de la academia
             string selectedAcademia = cbAcademias.SelectedItem.ToString();
-            Util.ConsultasGlobales.Academias.ForEach(academia =>
+            ConsultasGlobales.Academias.ForEach(academia =>
             {
                 if (academia.Nombre == selectedAcademia)
                 {
@@ -199,11 +220,83 @@ namespace SistemaEscolar.Gui.Dialogos
             {
                 MessageBox.Show("Error al registrar profesor");
                 DialogResult = false;
-                return;
+                return false;
             }
 
             MessageBox.Show("Exito al registrar profesor");
             DialogResult = true;
+
+            return true;
+        }
+
+        public bool ValidarDatosPersona()
+        {
+            string apellidoP = tbApellidoPaterno.Text;
+            string apellidoM = tbApellidoMaterno.Text;
+            string nombres = tbNombre.Text;
+            string fechaNac = $"{Convert.ToInt32(cbFechaAnio.SelectedItem)}-{Util.Datos.Meses[cbFechaMes.SelectedItem.ToString()]}-{Convert.ToInt32(cbFechaDia.SelectedItem)}";
+            bool sexo = rbSexoHombre.IsChecked == true;
+            string curp = tbCurp.Text;
+            string telefono = tbTelefono.Text;
+            string calle = "Cipres";
+            string numExt = tbNumeroExterior.Text;
+            string numInt = tbNumeroInterior.Text;
+            string codigoPostal = tbCodigoPostal.Text;
+
+            var validadores = new List<Validador<string>>()
+            {
+                new ValidadorStringNoVacio(apellidoP),
+                new ValidadorStringNoVacio(apellidoM),
+                new ValidadorStringNoVacio(nombres),
+                new ValidadorFecha(fechaNac),
+                new ValidadorCurp(curp),
+                new ValidadorTelefono(telefono),
+                new ValidadorStringNoVacio(calle),
+                new ValidadorNumeroString(numExt),
+                new ValidadorNumeroString(numInt),
+                new ValidadorNumeroString(codigoPostal),
+            };
+
+            foreach (Validador<string> validador in validadores)
+            {
+                if (!validador.Validar())
+                {
+                    MessageBox.Show(validador.UltimoError(), "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool ValidarDatosEmpleado()
+        {
+            string puestoSeleccionado = cbPuestos.SelectedItem.ToString();
+
+            var validador = new ValidadorStringNoVacio(puestoSeleccionado);
+
+            if (!validador.Validar())
+            {
+                MessageBox.Show(validador.UltimoError(), "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool ValidarDatosProfesor()
+        {
+            string idProfesor = tbIdProfesor.Text;
+
+            var validador = new ValidadorStringNoVacio(idProfesor);
+
+            if (!validador.Validar())
+            {
+                MessageBox.Show(validador.UltimoError(), "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            return true;
         }
     }
 }

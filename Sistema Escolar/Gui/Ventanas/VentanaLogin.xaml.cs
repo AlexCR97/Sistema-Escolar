@@ -1,5 +1,6 @@
 ﻿using SistemaEscolar.Entidades;
 using SistemaEscolar.Negocios.Casos.Implementaciones;
+using SistemaEscolar.Negocios.Validadores.Propiedades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
