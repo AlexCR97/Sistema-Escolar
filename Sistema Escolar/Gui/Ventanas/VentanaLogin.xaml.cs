@@ -1,5 +1,6 @@
 ﻿using SistemaEscolar.Entidades;
 using SistemaEscolar.Negocios.Casos.Implementaciones;
+using SistemaEscolar.Reportes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,12 @@ namespace SistemaEscolar.Gui.Ventanas
         public VentanaLogin()
         {
             InitializeComponent();
+            Reporte reporte = new Reporte();
+            reporte.Load(@"Reporte");
+            ReporteViewer reporteViewer = new ReporteViewer();
+            reporteViewer.cargarReporte(reporte);
+            //reporteViewer.ShowDialog();
+            
 
             bAdmin.MouseLeftButtonUp += (s, e) => tbIniciaSesionComo.Text = "Inicia sesión como 'Administrador'";
             bProfesor.MouseLeftButtonUp += (s, e) => tbIniciaSesionComo.Text = "Inicia sesión como 'Profesor'";

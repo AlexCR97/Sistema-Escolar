@@ -9,6 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using RootLibrary.WPF.Localization;
 using SistemaEscolar.Gui.Modelos;
 using SistemaEscolar.Gui.Secciones;
 using SistemaEscolar.Gui.Ventanas;

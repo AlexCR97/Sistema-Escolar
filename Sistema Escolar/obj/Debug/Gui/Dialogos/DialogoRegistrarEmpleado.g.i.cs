@@ -9,6 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using RootLibrary.WPF.Localization;
 using SistemaEscolar.Gui.Dialogos;
 using SistemaEscolar.Gui.Util;
 using System;
