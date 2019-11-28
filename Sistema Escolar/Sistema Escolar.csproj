@@ -110,6 +110,7 @@
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaAltaAlumno.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaAltaMateria.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaAltaPersona.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarAulas.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarCoordinadores.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarEspecialidades.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarEspecialidadesPorCarrera.cs" />
