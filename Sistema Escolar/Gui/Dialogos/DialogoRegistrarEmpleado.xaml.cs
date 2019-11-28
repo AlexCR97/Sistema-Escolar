@@ -1,5 +1,6 @@
 ﻿using SistemaEscolar.Entidades;
 using SistemaEscolar.Gui.Util;
+using SistemaEscolar.Gui.Vistas;
 using SistemaEscolar.Negocios.Casos.Implementaciones;
 using SistemaEscolar.Negocios.Validadores;
 using SistemaEscolar.Negocios.Validadores.Propiedades;
@@ -21,9 +22,23 @@ namespace SistemaEscolar.Gui.Dialogos
 {
     public partial class DialogoRegistrarEmpleado : Window
     {
-        public DialogoRegistrarEmpleado()
+        public TipoOperacion TipoOperacion { get; set; }
+
+        public DialogoRegistrarEmpleado(TipoOperacion tipoOperacion, string nombres, string apellidoP, string apellidoM)
         {
             InitializeComponent();
+
+            TipoOperacion = tipoOperacion;
+
+            // llenar datos
+
+            if (TipoOperacion == TipoOperacion.Editar)
+            {
+                if (nombres != null && apellidoP != null && apellidoM != null)
+                {
+                    LlenarDatosEmpleado(nombres, apellidoP, apellidoM);
+                }
+            }
 
             LlenarAcademias();
             LlenarDireccion();
@@ -54,6 +69,48 @@ namespace SistemaEscolar.Gui.Dialogos
 
                 Close();
             };
+        }
+
+        private void LlenarDatosEmpleado(string nombres, string apellidoP, string apellidoM)
+        {
+            var cu = new CasoUsoSeleccionarVistaDetallesEmpleados2();
+            VistaDetallesEmpleados2 vista = cu.Ejecutar(nombres, apellidoP, apellidoM);
+
+            if (vista == null)
+            {
+                MessageBox.Show("Error fatal. Codigo ALVT02");
+                return;
+            }
+
+            tbNombre.Text = vista.Nombres;
+            tbApellidoPaterno.Text = vista.ApellidoPaterno;
+            tbApellidoMaterno.Text = vista.ApellidoMaterno;
+
+            string fechaCorta = DateTime.Parse(vista.FechaNacimiento).ToShortDateString();
+            string[] tokensFecha = fechaCorta.Split('/');
+
+            cbFechaDia.SelectedItem = int.Parse(tokensFecha[1]);
+            cbFechaMes.SelectedIndex = int.Parse(tokensFecha[0]);
+            cbFechaAnio.SelectedItem = int.Parse(tokensFecha[2]);
+
+            rbSexoHombre.IsChecked = vista.Sexo;
+            tbCurp.Text = vista.Curp;
+            tbTelefono.Text = vista.Telefono;
+            cbEstadoCivil.SelectedIndex = vista.EstadoCivil;
+            tbCodigoPostal.Text = vista.CodigoPostal.ToString();
+            cbCalle.SelectedItem = vista.Calle;
+            tbNumeroExterior.Text = vista.NumeroExterior.ToString();
+            tbNumeroInterior.Text = vista.NumeroInterior.ToString();
+            cbColonia.SelectedItem = vista.Localidad;
+            cbCiudad.SelectedItem = vista.Municipio;
+            cbEstado.SelectedItem = vista.Estado;
+            tbCorreo.Text = "correo@live.com";
+            cbPuestos.SelectedItem = vista.Puesto;
+            tbIdProfesor.Text = vista.IdProfesor;
+            cbTipoMiembro.SelectedIndex = vista.TipoMiembro;
+            cbAcademias.SelectedItem = vista.Academia;
+
+            bRegistrar.Content = "Editar";
         }
 
         private void LlenarAcademias()

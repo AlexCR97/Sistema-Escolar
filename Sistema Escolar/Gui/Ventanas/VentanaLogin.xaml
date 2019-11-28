@@ -57,7 +57,7 @@
             <Button x:Name="bIngresar" Content="Ingresar" Width="300" Height="35" util:CornerRadiusSetter.CornerRadius="10"/>
 
             <!--Olvidaste-->
-            <TextBlock Text="¿Olvidaste tu contraseña?" TextAlignment="Center" Margin="0 50 0 0" Cursor="Hand"/>
+            <TextBlock x:Name="tbOlvideContrasena" Text="¿Olvidaste tu contraseña?" TextAlignment="Center" Margin="0 50 0 0" Cursor="Hand"/>
         </StackPanel>
         
     </Grid>

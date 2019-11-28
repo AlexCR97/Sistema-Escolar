@@ -92,7 +92,7 @@ namespace SistemaEscolar.Gui.Secciones
             if (!alumnos.ContainsKey(vistaAlumno))
                 return;
 
-            var alumno = alumnos[vistaAlumno];
+            Alumno alumno = alumnos[vistaAlumno];
 
             tbMatriculaCarrera.Text = $"{vistaAlumno.Matricula} | {vistaAlumno.Carrera}";
             tbNombre.Text = $"Nombre: {vistaAlumno.Nombre} {vistaAlumno.ApellidoP} {vistaAlumno.ApellidoM}";

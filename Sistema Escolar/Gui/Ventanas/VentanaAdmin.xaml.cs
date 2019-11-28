@@ -30,6 +30,7 @@ namespace SistemaEscolar.Gui.Ventanas
             nombresSeccion.Add("Aulas");
             nombresSeccion.Add("Horarios");
             nombresSeccion.Add("Materias");
+            nombresSeccion.Add("Reportes");
 
             secciones["Carreras"] = new ModeloSeccionCarreras();
             secciones["Personal"] = new ModeloSeccionPersonal();
@@ -37,6 +38,7 @@ namespace SistemaEscolar.Gui.Ventanas
             secciones["Aulas"] = new ModeloSeccionAulas();
             secciones["Horarios"] = new ModeloSeccionHorarios();
             secciones["Materias"] = new ModeloSeccionMaterias();
+            secciones["Reportes"] = new ModeloSeccionReportes();
 
             lvSecciones.ItemsSource = nombresSeccion;
             lvSecciones.MouseLeftButtonUp += (s, e) =>

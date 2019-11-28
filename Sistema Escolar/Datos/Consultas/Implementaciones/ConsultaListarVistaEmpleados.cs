@@ -17,12 +17,7 @@ namespace SistemaEscolar.Datos.Consultas.Implementaciones
 
         protected override string DefinirQuery()
         {
-            return "select personas.paterno, personas.materno, personas.nombres, academias.nombre, empleos.puesto " +
-                "from personas " +
-                "inner join empleados on empleados.idPersona = personas.idPersona " +
-                "inner join empleos on empleos.idEmpleo = empleados.idEmpleo " +
-                "inner join profesores on profesores.idEmpleado = empleados.idEmpleado " +
-                "inner join academias on academias.idAcademia = profesores.idAcademia";
+            return "select * from VistaEmpleados";
         }
     }
 }

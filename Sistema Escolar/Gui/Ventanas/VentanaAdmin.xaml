@@ -31,6 +31,9 @@
         <DataTemplate x:Name="seccionMateriasTemplate" DataType="{x:Type modelos:ModeloSeccionMaterias}">
             <secciones:SeccionMaterias DataContext="{Binding}"/>
         </DataTemplate>
+        <DataTemplate x:Name="seccionReportesTemplate" DataType="{x:Type modelos:ModeloSeccionReportes}">
+            <secciones:SeccionReportes DataContext="{Binding}"/>
+        </DataTemplate>
     </Window.Resources>
     
     <Grid>

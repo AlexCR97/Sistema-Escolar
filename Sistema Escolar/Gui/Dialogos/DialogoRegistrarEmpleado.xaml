@@ -135,7 +135,7 @@
 
                     <!--Correo institucional-->
                     <TextBlock Text="Correo institucional"/>
-                    <TextBox Height="30" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
+                    <TextBox x:Name="tbCorreo" Height="30" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
 
                     <!--Puesto-->
                     <TextBlock Text="Puesto"/>

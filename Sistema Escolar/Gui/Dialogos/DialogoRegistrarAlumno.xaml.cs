@@ -204,8 +204,6 @@ namespace SistemaEscolar.Gui.Dialogos
             string fechaCorta = DateTime.Parse(vista.FechaNacimiento).ToShortDateString();
             string[] tokensFecha = fechaCorta.Split('/');
 
-            //MessageBox.Show(String.Join(" , ", tokensFecha));
-
             cbFechaDia.SelectedItem = int.Parse(tokensFecha[1]);
             cbFechaMes.SelectedIndex = int.Parse(tokensFecha[0]);
             cbFechaAnio.SelectedItem = int.Parse(tokensFecha[2]);
