@@ -67,6 +67,21 @@ namespace SistemaEscolar.Gui.Util
             return especialidadesPorCarrera[carrera];
         }
 
+        internal static string ObtenerProfesor(string claveProfesor)
+        {
+            string nombre = "";
+            profesores = Profesores();
+            foreach (var profesor in profesores)
+            {
+                if (profesor.IdProfesor == claveProfesor)
+                {
+                    nombre = $"{profesor.Nombre} {profesor.ApellidoPaterno} {profesor.ApellidoPaterno}";
+                    break;
+                }
+            }
+            return nombre;
+        }
+
         public static void ActualizarEspecialidadesPorCarrera(string carrera)
         {
             List<string> especialidadesPorCarreraTemp = new CasoUsoListarEspecialidadesPorCarrera().Ejecutar(carrera);
@@ -116,6 +131,7 @@ namespace SistemaEscolar.Gui.Util
         #endregion
 
         #region Profesores
+        // TODO Cambiar esta lista por un diccionario <String(Clave profesor), Profesor>
         private static List<Profesor> profesores;
 
         public static List<Profesor> Profesores()

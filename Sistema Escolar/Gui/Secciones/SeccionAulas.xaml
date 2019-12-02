@@ -134,23 +134,23 @@
                             <TextBlock Text="Lunes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
                         <Border Grid.Column="1" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
-                            <TextBlock Text="Lunes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Martes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
                         <Border Grid.Column="2" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
-                            <TextBlock Text="Lunes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Miercoles" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
                         <Border Grid.Column="3" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
-                            <TextBlock Text="Lunes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Jueves" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
                         <Border Grid.Column="4" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
-                            <TextBlock Text="Lunes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Viernes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
                         <Border Grid.Column="5" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
-                            <TextBlock Text="Lunes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Sabado" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
 
                         <!--Horas Lunes-->
-                        <ListView Grid.Column="0" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
+                        <ListView x:Name="lvLunes" Grid.Column="0" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
 
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
@@ -163,16 +163,16 @@
                                 <DataTemplate>
                                     <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
                                         <StackPanel>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="{Binding NombreMateria}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="{Binding NombreProfesor}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="{Binding Hora}" Margin="0 5 0 0" TextAlignment="Center"/>
                                         </StackPanel>
                                     </Border>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
                         <!--Horas Martes-->
-                        <ListView Grid.Column="1" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
+                        <ListView x:Name="lvMartes" Grid.Column="1" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
 
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
@@ -185,16 +185,16 @@
                                 <DataTemplate>
                                     <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
                                         <StackPanel>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="{Binding NombreMateria}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="{Binding NombreProfesor}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="{Binding Hora}" Margin="0 5 0 0" TextAlignment="Center"/>
                                         </StackPanel>
                                     </Border>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
                         <!--Horas Miercoles-->
-                        <ListView Grid.Column="2" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
+                        <ListView x:Name="lvMiercoles" Grid.Column="2" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
 
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
@@ -207,16 +207,16 @@
                                 <DataTemplate>
                                     <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
                                         <StackPanel>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="{Binding NombreMateria}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="{Binding NombreProfesor}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="{Binding Hora}" Margin="0 5 0 0" TextAlignment="Center"/>
                                         </StackPanel>
                                     </Border>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
                         <!--Horas Jueves-->
-                        <ListView Grid.Column="3" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
+                        <ListView x:Name="lvJueves" Grid.Column="3" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
 
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
@@ -229,16 +229,16 @@
                                 <DataTemplate>
                                     <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
                                         <StackPanel>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="{Binding NombreMateria}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="{Binding NombreProfesor}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="{Binding Hora}" Margin="0 5 0 0" TextAlignment="Center"/>
                                         </StackPanel>
                                     </Border>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
                         <!--Horas Viernes-->
-                        <ListView Grid.Column="4" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
+                        <ListView x:Name="lvViernes" Grid.Column="4" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
 
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
@@ -251,16 +251,16 @@
                                 <DataTemplate>
                                     <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
                                         <StackPanel>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="{Binding NombreMateria}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="{Binding NombreProfesor}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="{Binding Hora}" Margin="0 5 0 0" TextAlignment="Center"/>
                                         </StackPanel>
                                     </Border>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
                         <!--Horas Sabado-->
-                        <ListView Grid.Column="5" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
+                        <ListView x:Name="lvSabado" Grid.Column="5" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
 
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
@@ -273,9 +273,9 @@
                                 <DataTemplate>
                                     <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
                                         <StackPanel>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="{Binding NombreMateria}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="{Binding NombreProfesor}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            <TextBlock Text="{Binding Hora}" Margin="0 5 0 0" TextAlignment="Center"/>
                                         </StackPanel>
                                     </Border>
                                 </DataTemplate>

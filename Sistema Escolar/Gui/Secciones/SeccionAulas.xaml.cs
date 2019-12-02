@@ -23,6 +23,7 @@ namespace SistemaEscolar.Gui.Secciones
     /// </summary>
     public partial class SeccionAulas : UserControl
     {
+        List<Grupo> grupos;
         public SeccionAulas()
         {
             InitializeComponent();
@@ -33,6 +34,52 @@ namespace SistemaEscolar.Gui.Secciones
             };
 
             CargarAulas();
+            lvAulas.PreviewMouseLeftButtonDown += LvAulas_PreviewMouseLeftButtonDown;
+        }
+
+        private void LvAulas_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var listView = sender as ListView;
+            if (listView.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            var aula = listView.SelectedItems[0].ToString().Trim();
+            CargarGrupos(aula);
+        }
+
+        private void CargarGrupos(String aula)
+        {
+            // Lunes a Sabado
+            var listasDias = new Dictionary<int, List<VistaGrupo>>();
+            listasDias[1] = new List<VistaGrupo>();
+            listasDias[2] = new List<VistaGrupo>();
+            listasDias[3] = new List<VistaGrupo>();
+            listasDias[4] = new List<VistaGrupo>();
+            listasDias[5] = new List<VistaGrupo>();
+            listasDias[6] = new List<VistaGrupo>();
+
+            foreach (var grupo in grupos)
+            {
+                if (grupo.Aula.Trim() == aula)
+                {
+                    var vista = new VistaGrupo()
+                    {
+                        NombreProfesor = Util.ConsultasGlobales.ObtenerProfesor(grupo.ClaveProfesor),
+                        NombreMateria = grupo.NombreMateria,
+                        Hora = Util.Datos.ClasesHoras[grupo.Hora]
+                    };
+
+                    listasDias[grupo.Dia].Add(vista);
+                }
+            }
+
+            lvLunes.ItemsSource = listasDias[1];
+            lvMartes.ItemsSource = listasDias[2];
+            lvMiercoles.ItemsSource = listasDias[3];
+            lvJueves.ItemsSource = listasDias[4];
+            lvViernes.ItemsSource = listasDias[5];
+            lvSabado.ItemsSource = listasDias[6];
         }
 
         private class GrupoComparer : IEqualityComparer<Grupo>
@@ -51,18 +98,11 @@ namespace SistemaEscolar.Gui.Secciones
         private void CargarAulas()
         {
             var cuListarGrupos = new CasoUsoListarGrupos();
-            var grupos = cuListarGrupos.Ejecutar();
+            grupos = cuListarGrupos.Ejecutar();
 
-            grupos = grupos.Distinct(new GrupoComparer()).ToList();
+            var gruposDistintos = grupos.Distinct(new GrupoComparer()).ToList();
 
-            lvAulas.ItemsSource = grupos;
-
-            //var vistasGrupo = new List<VistaGrupo>();
-
-            //foreach (var grupo in grupos)
-            //{
-
-            //}
+            lvAulas.ItemsSource = gruposDistintos;
         }
 
         private void RegistrarAula()
