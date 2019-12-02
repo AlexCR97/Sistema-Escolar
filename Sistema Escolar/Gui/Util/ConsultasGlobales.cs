@@ -154,5 +154,17 @@ namespace SistemaEscolar.Gui.Util
             return materias;
         }
         #endregion
+
+        #region Grupos
+        //public static readonly SortedDictionary<String, Grupo> grupos = new SortedDictionary<String, Grupo>();
+        //public static SortedDictionary<String, Grupo> Grupos()
+        //{
+        //    if (grupos == null)
+        //        grupos = new CasoUsoListarGrupos().Ejecutar();
+
+        //    return grupos;
+        //}
+
+        #endregion
     }
 }

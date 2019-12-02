@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SistemaEscolar.Gui.Vistas
 {
-    class VistaGrupo
+    public class VistaGrupo
     {
         public String ClaveGrupo { get; set; }
         public String NombreMateria { get; set; }

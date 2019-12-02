@@ -12,7 +12,7 @@
     <Border Padding="20">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="400"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
@@ -26,7 +26,6 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
                     <RowDefinition Height="40"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
@@ -45,23 +44,9 @@
 
                 <TextBox Grid.Column="3" Grid.Row="0" Text="Matricula" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="5 5 0 5"/>
 
-                <TextBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="Matricula" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 5"/>
-
-                <ComboBox Grid.Column="2" Grid.Row="1" Padding="10 0" VerticalContentAlignment="Center" util:CornerRadiusSetter.CornerRadius="10" Margin="5 5 0 5">
-                    <ComboBoxItem Content="Item"/>
-                    <ComboBoxItem Content="Item"/>
-                    <ComboBoxItem Content="Item"/>
-                </ComboBox>
-
-                <ComboBox Grid.Column="3" Grid.Row="1" Padding="10 0" VerticalContentAlignment="Center" util:CornerRadiusSetter.CornerRadius="10" Margin="5 5 0 5">
-                    <ComboBoxItem Content="Item"/>
-                    <ComboBoxItem Content="Item"/>
-                    <ComboBoxItem Content="Item"/>
-                </ComboBox>
-
                 <!--Aulas-->
                 <ListView x:Name="lvAulas"
-                    Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4" Margin="0 20 0 0" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Aulas}">
+                    Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Margin="0 20 0 0" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Aulas}">
 
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
@@ -109,13 +94,11 @@
                         </Border>
                     </Grid>
 
-                    <!--Informacion-->
-                    <TextBlock Text="1202" TextAlignment="Center" FontSize="18"/>
-                    <TextBlock Text="Salon de clases" TextAlignment="Center" FontSize="18"/>
-                    <TextBlock Text="Capacidad: 40" TextAlignment="Center" FontSize="18"/>
-
                     <!--Horarios-->
-                    <Grid>
+                    <ScrollViewer>
+                        
+                    
+                    <Grid Margin="0 40 0 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="160"/>
                             <ColumnDefinition Width="160"/>
@@ -282,6 +265,7 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </Grid>
+                    </ScrollViewer>
                 </StackPanel>
             </Border>
         </Grid>

@@ -3,16 +3,7 @@ using SistemaEscolar.Negocios.Casos.Implementaciones;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SistemaEscolar.Gui.Dialogos
 {
@@ -31,6 +22,11 @@ namespace SistemaEscolar.Gui.Dialogos
             chkNoEsSalon.Checked += ChkNoEsSalon_Checked;
             chkNoEsSalon.Unchecked += ChkNoEsSalon_Unchecked;
 
+            chkGrupoConocido.Checked += ChkGrupoConocido_Checked;
+            chkGrupoConocido.Unchecked += ChkGrupoConocido_Unchecked;
+
+            cbGrupo.IsEnabled = false;
+
             bRegistrar.Click += BRegistrar_Click;
 
             cbAulas.IsEnabled = false;
@@ -40,20 +36,59 @@ namespace SistemaEscolar.Gui.Dialogos
             LlenarMaterias();
             LlenarDias();
             LlenarHoras();
+            LlenarGrupos();
+        }
+
+        private void ChkGrupoConocido_Unchecked(object sender, RoutedEventArgs e)
+        {
+            cbGrupo.IsEnabled = false;
+            txtCodigoGrupo.IsEnabled = true;
+        }
+
+        private void ChkGrupoConocido_Checked(object sender, RoutedEventArgs e)
+        {
+            cbGrupo.IsEnabled = true;
+            txtCodigoGrupo.IsEnabled = false;
+        }
+
+        private class GrupoComparer : IEqualityComparer<Grupo>
+        {
+            public bool Equals(Grupo x, Grupo y)
+            {
+                return x.ClaveGrupo.Trim() == y.ClaveGrupo.Trim();
+            }
+
+            public int GetHashCode(Grupo obj)
+            {
+                return base.GetHashCode();
+            }
+        }
+
+        private void LlenarGrupos()
+        {
+            var cuListarGrupos = new CasoUsoListarGrupos();
+            var grupos = cuListarGrupos.Ejecutar();
+
+            var gruposDistintos = grupos.Distinct(new GrupoComparer()).ToList();
+
+            var listaClaves = new List<String>();
+            gruposDistintos.ForEach(v => listaClaves.Add(v.ClaveGrupo));
+
+            cbGrupo.ItemsSource = listaClaves;
         }
 
         private void BRegistrar_Click(object sender, RoutedEventArgs e)
         {
             var claveGrupo = txtCodigoGrupo.Text;
             var claveMateria = materias[cbMateria.SelectedIndex].Codigo;
-            string aula = "";
+            string aula;
             if (chkNoEsSalon.IsChecked == true)
             {
-                aula += cbAulas.SelectedItem.ToString();
+                aula = cbAulas.SelectedItem.ToString();
             }
             else
             {
-                aula += txtEdificio.Text + txtPlanta.Text + ((txtSalon.Text.Length < 2)? "0" + txtSalon.Text : txtSalon.Text);
+                aula = txtEdificio.Text + txtPlanta.Text + ((txtSalon.Text.Length < 2)? "0" + txtSalon.Text : txtSalon.Text);
             }
             var claveProfesor = profesores[cbProfesor.SelectedIndex].IdProfesor;
             var hora = Util.Datos.HorasClases[cbHora.SelectedItem.ToString()];

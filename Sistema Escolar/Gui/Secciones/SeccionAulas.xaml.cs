@@ -34,18 +34,12 @@ namespace SistemaEscolar.Gui.Secciones
             };
 
             CargarAulas();
-            lvAulas.PreviewMouseLeftButtonDown += LvAulas_PreviewMouseLeftButtonDown;
-        }
 
-        private void LvAulas_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            var listView = sender as ListView;
-            if (listView.SelectedItems.Count == 0)
+            lvAulas.MouseLeftButtonUp += (s, e) =>
             {
-                return;
-            }
-            var aula = listView.SelectedItems[0].ToString().Trim();
-            CargarGrupos(aula);
+                string aula = lvAulas.SelectedItem.ToString().Trim();
+                CargarGrupos(aula);
+            };
         }
 
         private void CargarGrupos(String aula)

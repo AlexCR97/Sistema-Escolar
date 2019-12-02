@@ -22,12 +22,32 @@
                 <StackPanel>
 
                     <TextBlock Text="Codigo de aula" TextAlignment="Center"/>
-                    <TextBox Name="txtCodigoGrupo"
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            <CheckBox Name="chkGrupoConocido"
+                                HorizontalAlignment="Center">
+                                Conoce el grupo?
+                            </CheckBox>
+                            <ComboBox Name="cbGrupo"
+                                      Margin="5 5">
+                                
+                            </ComboBox>
+                        </StackPanel>
+                        
+                        <TextBox Name="txtCodigoGrupo"
+                             Grid.Column="1"
                              Height="30" 
                              Padding="10 0" 
                              VerticalContentAlignment="Center" 
                              BorderBrush="LightGray" 
                              Margin="5 0"/>
+
+                    </Grid>
 
                     <Grid Margin="0 5 0 15">
                         <Grid.ColumnDefinitions>
@@ -69,7 +89,7 @@
                         </CheckBox>
                         <ComboBox Name="cbAulas"
                                   Margin="10, 5">
-                            
+
                         </ComboBox>
                     </DockPanel>
 
