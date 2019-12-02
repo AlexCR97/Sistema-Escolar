@@ -13,7 +13,7 @@ namespace SistemaEscolar.Datos
 
         public Conexion()
         {
-            servidor = "localhost//TECMANTE";
+            servidor = "ADA\\TECMANTE";
             baseDatos = "BDTEC";
             usuario = "sa";
             contrasena = "sa1234";

@@ -6,16 +6,20 @@ using System.Threading.Tasks;
 
 namespace SistemaEscolar.Datos.Consultas.Implementaciones
 {
-    class ConsultaListarAulas : Consulta
+    class ConsultaListarProfesores : Consulta
     {
+        public ConsultaListarProfesores(params object[] args) : base(args)
+        {
+        }
+
         protected override Dictionary<string, object> DefinirParametros(params object[] args)
         {
-            return null;
+            return new Dictionary<string, object>();
         }
 
         protected override string DefinirQuery()
         {
-            throw new NotImplementedException();
+            return "exec SeleccionarListaProfesores";
         }
     }
 }

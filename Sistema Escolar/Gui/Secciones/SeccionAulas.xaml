@@ -33,15 +33,16 @@
 
                 <!--Filtros-->
                 <ComboBox Grid.Column="0" Grid.Row="0" Padding="10 0" VerticalContentAlignment="Center" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 5 5">
-                    <ComboBoxItem Content="Item"/>
-                    <ComboBoxItem Content="Item"/>
-                    <ComboBoxItem Content="Item"/>
+                    <ComboBoxItem Content="SALON"/>
+                    <ComboBoxItem Content="CENTRO DE COMPUTO"/>
+                    <ComboBoxItem Content="TALLER"/>
+                    <ComboBoxItem Content="LABORATORIO"/>
                 </ComboBox>
 
                 <TextBox Grid.Column="1" Grid.Row="0" Text="Matricula" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="5 5 0 5"/>
-                
+
                 <TextBox Grid.Column="2" Grid.Row="0" Text="Matricula" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="5 5 0 5"/>
-                
+
                 <TextBox Grid.Column="3" Grid.Row="0" Text="Matricula" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="5 5 0 5"/>
 
                 <TextBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="Matricula" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 5"/>
@@ -101,7 +102,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition Width="120"/>
                         </Grid.ColumnDefinitions>
-                        
+
                         <Border Padding="5" Grid.Column="0" >
                             <Button Content="Editar" util:CornerRadiusSetter.CornerRadius="10"/>
                         </Border>
@@ -115,7 +116,7 @@
                     <TextBlock Text="1202" TextAlignment="Center" FontSize="18"/>
                     <TextBlock Text="Salon de clases" TextAlignment="Center" FontSize="18"/>
                     <TextBlock Text="Capacidad: 40" TextAlignment="Center" FontSize="18"/>
-                    
+
                     <!--Horarios-->
                     <Grid>
                         <Grid.ColumnDefinitions>

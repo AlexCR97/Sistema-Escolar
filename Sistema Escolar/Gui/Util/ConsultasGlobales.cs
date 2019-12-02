@@ -113,6 +113,30 @@ namespace SistemaEscolar.Gui.Util
             return coordinadores;
         }
 
-        #endregion 
+        #endregion
+
+        #region Profesores
+        private static List<Profesor> profesores;
+
+        public static List<Profesor> Profesores()
+        {
+            if (profesores == null)
+                profesores = new CasoUsoListarProfesores().Ejecutar();
+
+            return profesores;
+        }
+        #endregion
+
+        #region Materias
+        private static List<Materia> materias;
+
+        public static List<Materia> Materias()
+        {
+            if (materias == null)
+                materias = new CasoUsoListarMaterias().Ejecutar();
+
+            return materias;
+        }
+        #endregion
     }
 }

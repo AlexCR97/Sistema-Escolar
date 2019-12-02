@@ -57,6 +57,33 @@ namespace SistemaEscolar.Gui.Util
             "Graduado",
         };
 
+        public static readonly Dictionary<string, int> DiasSemana = new Dictionary<string, int>()
+        {
+            { "Lunes", 1 },
+            { "Martes", 2 },
+            { "Miercoles", 3 },
+            { "Jueves", 4 },
+            { "Viernes", 5 },
+            { "Sabado", 6 }
+        };
+
+        public static readonly Dictionary<string, int> HorasClases = new Dictionary<string, int>()
+        {
+            { "7:00", 1 },
+            { "7:55", 2 },
+            { "8:50", 3 },
+            { "9:45", 4 },
+            { "10:40", 5 },
+            { "11:35", 6 },
+            { "12:30", 7 },
+            { "13:25", 8 },
+            { "14:20", 9 },
+            { "15:15", 10 },
+            { "16:10", 11 },
+            { "17:05", 12 },
+            { "18:00", 13 }
+        };
+
         public static List<int> Anios()
         {
             var anios = new List<int>();
