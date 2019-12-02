@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\carp_\source\repos\Sistema Escolar\Sistema Escolar\obj\Debug\
+C:\Users\jandr\source\repos\NuevoSistemaEscolar\Sistema Escolar\obj\Debug\
 SistemaEscolar
 none
 false
 DEBUG;TRACE
-C:\Users\carp_\source\repos\Sistema Escolar\Sistema Escolar\App.xaml
+C:\Users\jandr\source\repos\NuevoSistemaEscolar\Sistema Escolar\App.xaml
 15-1355392014
 
-1771008129118
+1791350677895
 23513955418
 Gui\Dialogos\DialogoRegistrarAlumno.xaml;Gui\Dialogos\DialogoRegistrarAula.xaml;Gui\Dialogos\DialogoRegistrarCarrera.xaml;Gui\Dialogos\DialogoRegistrarEmpleado.xaml;Gui\Secciones\SeccionAlumnos.xaml;Gui\Secciones\SeccionAulas.xaml;Gui\Secciones\SeccionHorarios.xaml;Gui\Secciones\SeccionMaterias.xaml;Gui\Secciones\SeccionPersonal.xaml;Gui\Secciones\SeccionCarreras.xaml;Gui\Secciones\SeccionReportes.xaml;Gui\Ventanas\VentanaCarga.xaml;Gui\Ventanas\VentanaLogin.xaml;Gui\Ventanas\VentanaAdmin.xaml;Reportes\ReportViewer.xaml;
 

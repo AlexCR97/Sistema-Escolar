@@ -42,13 +42,21 @@ namespace SistemaEscolar.Gui.Dialogos
         private void ChkGrupoConocido_Unchecked(object sender, RoutedEventArgs e)
         {
             cbGrupo.IsEnabled = false;
+           
             txtCodigoGrupo.IsEnabled = true;
+
+            cbProfesor.IsEnabled = true;
+            cbMateria.IsEnabled = true;
         }
 
         private void ChkGrupoConocido_Checked(object sender, RoutedEventArgs e)
         {
             cbGrupo.IsEnabled = true;
+            
             txtCodigoGrupo.IsEnabled = false;
+
+            cbProfesor.IsEnabled = false;
+            cbMateria.IsEnabled = false;
         }
 
         private class GrupoComparer : IEqualityComparer<Grupo>
@@ -80,7 +88,51 @@ namespace SistemaEscolar.Gui.Dialogos
 
         private void BRegistrar_Click(object sender, RoutedEventArgs e)
         {
+
+            if (chkGrupoConocido.IsChecked == true)
+            {
+                AgregarDatosGrupo();
+            }
+            else
+            {
+                RegistrarNuevoGrupo();
+            }
+
+        }
+
+        private void AgregarDatosGrupo()
+        {
+            var claveGrupo = cbGrupo.SelectedItem.ToString();
+
+            string aula;
+            if (chkNoEsSalon.IsChecked == true)
+            {
+                aula = cbAulas.SelectedItem.ToString();
+            }
+            else
+            {
+                aula = txtEdificio.Text + txtPlanta.Text + ((txtSalon.Text.Length < 2) ? "0" + txtSalon.Text : txtSalon.Text);
+            }
+            var hora = Util.Datos.HorasClases[cbHora.SelectedItem.ToString()];
+            var dia = Util.Datos.DiasSemana[cbDia.SelectedItem.ToString()]; ;
+
+            var cu = new CasoUsoAgregarDatosGrupo();
+
+            bool exito = cu.Ejecutar(claveGrupo,  aula,  hora, dia);
+
+            if (!exito)
+            {
+                MessageBox.Show("Error al agregar datos gupo");
+                return;
+            }
+
+            MessageBox.Show("Exito al agregar datos grupo");
+        }
+
+        private void RegistrarNuevoGrupo()
+        {
             var claveGrupo = txtCodigoGrupo.Text;
+
             var claveMateria = materias[cbMateria.SelectedIndex].Codigo;
             string aula;
             if (chkNoEsSalon.IsChecked == true)

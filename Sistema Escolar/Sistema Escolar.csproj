@@ -73,6 +73,7 @@
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaActualizarEspecialidad.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaActualizarPersona.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaActualizarProfesor.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaAgregarDatosGrupo.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaAltaCarrera.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaAltaGrupo.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaInsertarActividad.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarEspecialidad.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarPersona.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarProfesor.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoAgregarDatosGrupo.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoInsertarActividad.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoInsertarCalificacion.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarCoordinadores.cs" />
