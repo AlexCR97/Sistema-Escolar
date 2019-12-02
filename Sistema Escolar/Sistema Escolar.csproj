@@ -65,10 +65,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaActualizarAcademia.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaActualizarActividad.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaActualizarAlumno.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaActualizarCarrera.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaActualizarEmpleado.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaActualizarEspecialidad.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaActualizarPersona.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaActualizarProfesor.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaInsertarActividad.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaInsertarCalificacion.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistaDetallesEmpleados.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistaCarrerasEspecialidades.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarDireccionPersona.cs" />
@@ -84,10 +90,16 @@
     <Compile Include="Gui\Vistas\VistaDetallesEmpleados.cs" />
     <Compile Include="Gui\Vistas\VistaDetallesEmpleados2.cs" />
     <Compile Include="Gui\Vistas\VistaDireccionPersona.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarAcademia.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarActividad.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarAlumno.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarCarrera.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarEmpleado.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarEspecialidad.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarPersona.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarProfesor.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoInsertarActividad.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoInsertarCalificacion.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaCarrerasEspecialidades.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaDetallesEmpleados.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoSeleccionarDireccionPersona.cs" />
