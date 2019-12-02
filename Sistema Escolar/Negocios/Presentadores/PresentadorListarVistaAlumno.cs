@@ -28,6 +28,7 @@ namespace SistemaEscolar.Negocios.Presentadores
                         ApellidoM = row[2].ToString(),
                         Nombre = row[3].ToString(),
                         Carrera = row[4].ToString(),
+                        Tutor = row[5].ToString(),
                     });
                 }
 

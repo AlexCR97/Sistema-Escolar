@@ -85,6 +85,18 @@ namespace SistemaEscolar.Gui.Util
             return $"{apellidoP}.{apellidoM}.{matricula}@itsmante.edu.mx";
         }
 
+        public static string CorreoDeProfesor(string nombres, string apellidoPaterno)
+        {
+            var sb = new StringBuilder();
+
+            foreach (string nombre in nombres.Split(' '))
+                sb.Append(nombre[0]);
+
+            sb.Append(apellidoPaterno).Append("@itsmante.edu.mx");
+
+            return sb.ToString();
+        }
+
         public static List<int> DiasDeMes(string mes)
         {
             var dias = new List<int>();

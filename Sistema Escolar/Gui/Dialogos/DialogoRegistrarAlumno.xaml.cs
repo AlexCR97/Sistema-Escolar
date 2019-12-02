@@ -23,6 +23,7 @@ namespace SistemaEscolar.Gui.Dialogos
     public partial class DialogoRegistrarAlumno : Window
     {
         private int cantidadAlumnosRegistrados;
+        private string CurpOriginal;
 
         public TipoOperacion TipoOperacion { get; set; }
 
@@ -32,9 +33,20 @@ namespace SistemaEscolar.Gui.Dialogos
 
             TipoOperacion = tipoOperacion;
 
+            LlenarFecha();
+            LlenarCarreras();
+            LlenarEspecialidadesPorCarrera(cbCarrera.SelectedItem.ToString());
+            LlenarEstadosCiviles();
+            LlenarDireccion();
+            LlenarMatricula();
+            LlenarTutores();
+
             // llenar datos
             if (TipoOperacion == TipoOperacion.Editar)
             {
+                tbMatricula.IsEnabled = false;
+                bRegistrar.Content = "Editar";
+
                 if (matricula != null)
                 {
                     LlenarDatosDetallesAlumno(matricula);
@@ -90,7 +102,11 @@ namespace SistemaEscolar.Gui.Dialogos
                         if (!ValidarDatosAlumno())
                             return;
 
+                        if (!EditarPersona())
+                            return;
 
+                        if (!EditarAlumno())
+                            return;
 
                         break;
                     }
@@ -98,14 +114,6 @@ namespace SistemaEscolar.Gui.Dialogos
 
                 Close();
             };
-
-            LlenarFecha();
-            LlenarCarreras();
-            LlenarEspecialidadesPorCarrera(cbCarrera.SelectedItem.ToString());
-            LlenarEstadosCiviles();
-            LlenarDireccion();
-            LlenarMatricula();
-            LlenarTutores();
         }
 
         private void GenerarCorreo()
@@ -194,6 +202,7 @@ namespace SistemaEscolar.Gui.Dialogos
             if (vista == null)
             {
                 MessageBox.Show("Error fatal. Codigo ALVT02");
+                Close();
                 return;
             }
 
@@ -221,9 +230,12 @@ namespace SistemaEscolar.Gui.Dialogos
             cbEstado.SelectedItem = vista.Estado;
             tbMatricula.Text = vista.Matricula;
             tbCorreoInstitucional.Text = "correo";
+            cbCarrera.SelectedItem = vista.Carrera;
             cbEspecialidad.SelectedItem = vista.Esepcialidad;
             tbGrupo.Text = "";
             cbTutor.SelectedItem = $"{vista.NombreTutor} {vista.ApellidoPaternoTutor} {vista.ApellidoMaternoTutor}";
+
+            CurpOriginal = vista.Curp;
         }
 
         private void LlenarFecha()
@@ -357,6 +369,54 @@ namespace SistemaEscolar.Gui.Dialogos
             return true;
         }
 
+        public bool EditarPersona()
+        {
+            string apellidoP = tbApellidoPaterno.Text;
+            string apellidoM = tbApellidoMaterno.Text;
+            string nombres = tbNombre.Text;
+            string fechaNac = $"{Convert.ToInt32(cbFechaAnio.SelectedItem)}-{Util.Datos.Meses[cbFechaMes.SelectedItem.ToString()]}-{Convert.ToInt32(cbFechaDia.SelectedItem)}";
+            bool sexo = rbSexoHombre.IsChecked == true;
+            string curp = tbCurp.Text;
+            string telefono = tbTelefono.Text;
+            string calle = cbCalle.SelectedItem.ToString();
+            string numExt = tbNumeroExterior.Text;
+            string numInt = tbNumeroInterior.Text;
+            string codigoPostal = tbCodigoPostal.Text;
+            int edoCivil = 1;
+            int discapacidad = 1;
+
+            var cu = new CasoUsoActualizarPersona();
+            
+            bool exito = cu.Ejecutar(
+                CurpOriginal,
+                apellidoP,
+                apellidoM,
+                nombres,
+                fechaNac,
+                sexo,
+                curp,
+                telefono,
+                calle,
+                numExt,
+                numInt,
+                codigoPostal,
+                edoCivil,
+                discapacidad
+            );
+
+            if (!exito)
+            {
+                MessageBox.Show("Error al editar persona");
+                DialogResult = false;
+                return false;
+            }
+
+            MessageBox.Show("Exito al editar persona");
+            DialogResult = true;
+
+            return true;
+        }
+
         private bool RegistrarAlumno()
         {
             var tutorSeleccionado = cbTutor.SelectedItem.ToString().Split(' ');
@@ -382,6 +442,52 @@ namespace SistemaEscolar.Gui.Dialogos
 
             MessageBox.Show("Exito al registrar alumno");
             DialogResult = true;
+
+            return true;
+        }
+
+        private bool EditarAlumno()
+        {
+            var tutorSeleccionado = cbTutor.SelectedItem.ToString().Split(' ');
+            string nombreTutor;
+            string apellidoPTutor;
+            string apellidoMTutor;
+
+            if (tutorSeleccionado.Length == 4)
+            {
+                nombreTutor = tutorSeleccionado[0] + " " + tutorSeleccionado[1];
+                apellidoPTutor = tutorSeleccionado[2];
+                apellidoMTutor = tutorSeleccionado[3];
+            }
+            else
+            {
+                nombreTutor = tutorSeleccionado[0];
+                apellidoPTutor = tutorSeleccionado[1];
+                apellidoMTutor = tutorSeleccionado[2];
+            }
+
+            string curpNueva = tbCurp.Text;
+            string matricula = tbMatricula.Text;
+            string carrera = cbCarrera.SelectedItem.ToString();
+            string tutorApellidoP = apellidoPTutor;
+            string tutorApellidoM = apellidoMTutor;
+            string tutorNombre = nombreTutor;
+            string especialidad = cbEspecialidad.SelectedItem.ToString();
+            int estatus = 1;
+
+            var cu = new CasoUsoActualizarAlumno();
+
+            bool exito = cu.Ejecutar(curpNueva, matricula, carrera, tutorApellidoP, tutorApellidoM, tutorNombre, especialidad, estatus);
+
+            if (!exito)
+            {
+                MessageBox.Show("Error al editar alumno");
+                //DialogResult = false;
+                return false;
+            }
+
+            MessageBox.Show("Exito al editar alumno");
+            //DialogResult = true;
 
             return true;
         }

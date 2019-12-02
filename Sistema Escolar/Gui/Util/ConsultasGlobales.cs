@@ -63,7 +63,22 @@ namespace SistemaEscolar.Gui.Util
         public static List<string> EspecialidadesPorCarreras(string carrera)
         {
             if (!especialidadesPorCarrera.ContainsKey(carrera))
-                especialidadesPorCarrera[carrera] = new CasoUsoListarEspecialidadesPorCarrera().Ejecutar(carrera);
+            {
+                if (carrera == "Todos")
+                {
+                    var nombresEspecialidades = new List<string>();
+
+                    Especialidades().ForEach(especialidades => nombresEspecialidades.Add(especialidades.Nombre));
+                    nombresEspecialidades.Sort();
+                    especialidadesPorCarrera[carrera] = nombresEspecialidades;
+                }
+                else
+                {
+                    var nombresEspecialidades = new CasoUsoListarEspecialidadesPorCarrera().Ejecutar(carrera);
+                    nombresEspecialidades.Sort();
+                    especialidadesPorCarrera[carrera] = nombresEspecialidades;
+                }
+            }
 
             return especialidadesPorCarrera[carrera];
         }
@@ -160,6 +175,20 @@ namespace SistemaEscolar.Gui.Util
                     vistasUbicaciones = new CasoUsoListarVistaUbicaciones().Ejecutar();
 
                 return vistasUbicaciones;
+            }
+        }
+        #endregion
+
+        #region Vistas Carreras Especialidades
+        private static List<VistaCarrerasEspecialidades> vistasCarrerasEspecialidades;
+
+        public static List<VistaCarrerasEspecialidades> VistasCarrerasEspecialidades
+        {
+            get {
+                if (vistasCarrerasEspecialidades == null)
+                    vistasCarrerasEspecialidades = new CasoUsoListarVistaCarrerasEspecialidades().Ejecutar();
+
+                return vistasCarrerasEspecialidades;
             }
         }
         #endregion

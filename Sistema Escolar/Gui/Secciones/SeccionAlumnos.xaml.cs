@@ -22,7 +22,9 @@ namespace SistemaEscolar.Gui.Secciones
 {
     public partial class SeccionAlumnos : UserControl
     {
-        private Dictionary<VistaAlumno, Alumno> alumnos = new Dictionary<VistaAlumno, Alumno>();
+        private Dictionary<VistaAlumno, Alumno> Alumnos = new Dictionary<VistaAlumno, Alumno>();
+        private List<VistaAlumno> ListaVistasAlumnos;
+        private List<Alumno> ListaAlumnos;
 
         public SeccionAlumnos()
         {
@@ -34,8 +36,89 @@ namespace SistemaEscolar.Gui.Secciones
 
             dgAlumnos.MouseLeftButtonUp += (s, e) => LlenarDatosAlumno();
 
+            cbFiltroCarrera.SelectionChanged += (s, e) => FiltrarPorCarrera();
+            cbFiltroEstatus.SelectionChanged += (s, e) => FiltrarPorEstatus();
+            cbFiltroTutor.SelectionChanged += (s, e) => FiltrarPorTutor();
+            tbFiltroMatricula.TextChanged += (s, e) => FiltarPorMatricula();
+            tbFiltroApellidoP.TextChanged += (s, e) => FiltrarPorApellidoP();
+            tbFiltroApellidoM.TextChanged += (s, e) => FiltrarPorApellidoM();
+
             LlenarTablaAlumnos();
             LlenarFiltros();
+        }
+        private void FiltarPorMatricula()
+        {
+            string matricula = tbFiltroMatricula.Text;
+
+            if (String.IsNullOrWhiteSpace(matricula))
+            {
+                dgAlumnos.ItemsSource = ListaVistasAlumnos;
+            }
+            else
+            {
+                dgAlumnos.ItemsSource = ListaVistasAlumnos.FindAll(alumno => alumno.Matricula.Contains(matricula));
+            }
+        }
+
+        private void FiltrarPorApellidoP()
+        {
+            string apellidoP = tbFiltroApellidoP.Text;
+
+            if (String.IsNullOrWhiteSpace(apellidoP))
+            {
+                dgAlumnos.ItemsSource = ListaVistasAlumnos;
+            }
+            else
+            {
+                dgAlumnos.ItemsSource = ListaVistasAlumnos.FindAll(alumno => alumno.ApellidoP.Contains(apellidoP));
+            }
+        }
+
+        private void FiltrarPorApellidoM()
+        {
+            string apellidoM = tbFiltroApellidoM.Text;
+
+            if (String.IsNullOrWhiteSpace(apellidoM))
+            {
+                dgAlumnos.ItemsSource = ListaVistasAlumnos;
+            }
+            else
+            {
+                dgAlumnos.ItemsSource = ListaVistasAlumnos.FindAll(alumno => alumno.ApellidoM.Contains(apellidoM));
+            }
+        }
+
+        private void FiltrarPorTutor()
+        {
+            string tutorSeleccionado = cbFiltroTutor.SelectedItem.ToString();
+
+            if (tutorSeleccionado == "Todos  ")
+            {
+                dgAlumnos.ItemsSource = ListaVistasAlumnos;
+            }
+            else
+            {
+                dgAlumnos.ItemsSource = ListaVistasAlumnos.FindAll(alumno => alumno.Tutor == tutorSeleccionado);
+            }
+        }
+
+        private void FiltrarPorEstatus()
+        {
+
+        }
+
+        private void FiltrarPorCarrera()
+        {
+            string carreraSeleccionada = cbFiltroCarrera.SelectedItem.ToString();
+
+            if (carreraSeleccionada == "Todos")
+            {
+                dgAlumnos.ItemsSource = ListaVistasAlumnos;
+            }
+            else
+            {
+                dgAlumnos.ItemsSource = ListaVistasAlumnos.FindAll(alumno => alumno.Carrera == carreraSeleccionada);
+            }
         }
 
         private void EditarAlumno()
@@ -51,7 +134,15 @@ namespace SistemaEscolar.Gui.Secciones
             }
 
             var dialogo = new DialogoRegistrarAlumno(TipoOperacion.Editar, matricula);
-            dialogo.ShowDialog();
+
+            try
+            {
+                dialogo.ShowDialog();
+                LlenarTablaAlumnos();
+            }
+            catch {
+                LlenarTablaAlumnos();
+            }
         }
 
         private void RegistrarAlumno()
@@ -66,20 +157,20 @@ namespace SistemaEscolar.Gui.Secciones
         private void LlenarTablaAlumnos()
         {
             var cuVistas = new CasoUsoListarVistaAlumnos();
-            List<VistaAlumno> vistas = cuVistas.Ejecutar();
+            ListaVistasAlumnos = cuVistas.Ejecutar();
 
             var cuAlumnos = new CasoUsoListarAlumnos();
-            List<Alumno> alumnos = cuAlumnos.Ejecutar();
+            ListaAlumnos = cuAlumnos.Ejecutar();
 
-            for (int i = 0; i < vistas.Count; i++)
+            for (int i = 0; i < ListaVistasAlumnos.Count; i++)
             {
-                var vista = vistas[i];
-                var alumno = alumnos[i];
+                var vista = ListaVistasAlumnos[i];
+                var alumno = ListaAlumnos[i];
 
-                this.alumnos[vista] = alumno;
+                this.Alumnos[vista] = alumno;
             }
 
-            dgAlumnos.ItemsSource = vistas;
+            dgAlumnos.ItemsSource = ListaVistasAlumnos;
         }
 
         private void LlenarDatosAlumno()
@@ -89,15 +180,17 @@ namespace SistemaEscolar.Gui.Secciones
             if (vistaAlumno == null)
                 return;
 
-            if (!alumnos.ContainsKey(vistaAlumno))
+            if (!Alumnos.ContainsKey(vistaAlumno))
                 return;
 
-            Alumno alumno = alumnos[vistaAlumno];
+            Alumno alumno = Alumnos[vistaAlumno];
 
             tbMatriculaCarrera.Text = $"{vistaAlumno.Matricula} | {vistaAlumno.Carrera}";
             tbNombre.Text = $"Nombre: {vistaAlumno.Nombre} {vistaAlumno.ApellidoP} {vistaAlumno.ApellidoM}";
-            tbFechaNac.Text = $"{alumno.FechaNacimiento}";
-            tbCurp.Text = $"{alumno.Curp}";
+            tbApellidoP.Text = $"Apellido paterno: {vistaAlumno.ApellidoP}";
+            tbApellidoM.Text = $"Apellido materno: {vistaAlumno.ApellidoM}";
+            tbFechaNac.Text = $"Fecha de nacimiento: {DateTime.Parse(alumno.FechaNacimiento).ToShortDateString()}";
+            tbCurp.Text = $"CURP: {alumno.Curp}";
 
             tbTelefono.Text = alumno.Telefono;
             //tbDireccion.Text = alumno.Direccion;
@@ -107,16 +200,19 @@ namespace SistemaEscolar.Gui.Secciones
         private void LlenarFiltros()
         {
             var carreras = Util.ConsultasGlobales.Carreras();
-            cbCarrera.ItemsSource = carreras;
-            cbCarrera.SelectedIndex = 0;
+            carreras.Insert(0, new Carrera() { Nombre = "Todos" });
+            cbFiltroCarrera.ItemsSource = carreras;
+            cbFiltroCarrera.SelectedIndex = 0;
 
             var estatus = Util.Datos.Estatus;
-            cbEstatus.ItemsSource = estatus;
-            cbEstatus.SelectedIndex = 0;
+            estatus.Insert(0, "Todos");
+            cbFiltroEstatus.ItemsSource = estatus;
+            cbFiltroEstatus.SelectedIndex = 0;
 
             var tutores = Util.ConsultasGlobales.Tutores();
-            cbTutor.ItemsSource = tutores;
-            cbTutor.SelectedIndex = 0;
+            tutores.Insert(0, new Tutor() { Nombre = "Todos", ApellidoPaterno = "", ApellidoMaterno = "" });
+            cbFiltroTutor.ItemsSource = tutores;
+            cbFiltroTutor.SelectedIndex = 0;
         }
     }
 }

@@ -22,6 +22,9 @@ namespace SistemaEscolar.Gui.Dialogos
 {
     public partial class DialogoRegistrarEmpleado : Window
     {
+        private string CurpOriginal;
+        private string IdProfesorOriginal;
+
         public TipoOperacion TipoOperacion { get; set; }
 
         public DialogoRegistrarEmpleado(TipoOperacion tipoOperacion, string nombres, string apellidoP, string apellidoM)
@@ -49,23 +52,51 @@ namespace SistemaEscolar.Gui.Dialogos
 
             bRegistrar.Click += (s, e) =>
             {
-                if (!ValidarDatosPersona())
-                    return;
+                switch (TipoOperacion)
+                {
+                    case TipoOperacion.Registrar:
+                    {
+                        if (!ValidarDatosPersona())
+                            return;
 
-                if (!ValidarDatosEmpleado())
-                    return;
+                        if (!ValidarDatosEmpleado())
+                            return;
 
-                if (!ValidarDatosProfesor())
-                    return;
+                        if (!ValidarDatosProfesor())
+                            return;
 
-                if (!RegistrarPersona())
-                    return;
+                        if (!RegistrarPersona())
+                            return;
 
-                if (!RegistrarEmpleado())
-                    return;
+                        if (!RegistrarEmpleado())
+                            return;
 
-                if (!RegistrarProfesor())
-                    return;
+                        if (!RegistrarProfesor())
+                            return;
+
+                        break;
+                    }
+
+                    case TipoOperacion.Editar:
+                    {
+                        if (!ValidarDatosPersona())
+                            return;
+
+                        if (!ValidarDatosEmpleado())
+                            return;
+
+                        if (!ValidarDatosProfesor())
+                            return;
+
+                        if (!EditarPersona())
+                            return;
+
+                        if (!EditarEmpleado())
+                            return;
+
+                        break;
+                    }
+                }
 
                 Close();
             };
@@ -111,7 +142,10 @@ namespace SistemaEscolar.Gui.Dialogos
             cbAcademias.SelectedItem = vista.Academia;
 
             bRegistrar.Content = "Editar";
-        }
+
+            CurpOriginal = vista.Curp;
+            IdProfesorOriginal = tbIdProfesor.Text;
+    }
 
         private void LlenarAcademias()
         {
@@ -218,6 +252,54 @@ namespace SistemaEscolar.Gui.Dialogos
             return true;
         }
 
+        private bool EditarPersona()
+        {
+            string apellidoP = tbApellidoPaterno.Text;
+            string apellidoM = tbApellidoMaterno.Text;
+            string nombres = tbNombre.Text;
+            string fechaNac = $"{Convert.ToInt32(cbFechaAnio.SelectedItem)}-{Util.Datos.Meses[cbFechaMes.SelectedItem.ToString()]}-{Convert.ToInt32(cbFechaDia.SelectedItem)}";
+            bool sexo = rbSexoHombre.IsChecked == true;
+            string curp = tbCurp.Text;
+            string telefono = tbTelefono.Text;
+            string calle = "Cipres";
+            string numExt = tbNumeroExterior.Text;
+            string numInt = tbNumeroInterior.Text;
+            string codigoPostal = tbCodigoPostal.Text;
+            int edoCivil = 1;
+            int discapacidad = 1;
+
+            var cu = new CasoUsoActualizarPersona();
+
+            bool exito = cu.Ejecutar(
+                CurpOriginal,
+                apellidoP,
+                apellidoM,
+                nombres,
+                fechaNac,
+                sexo,
+                curp,
+                telefono,
+                calle,
+                numExt,
+                numInt,
+                codigoPostal,
+                edoCivil,
+                discapacidad
+            );
+
+            if (!exito)
+            {
+                MessageBox.Show("Error al editar persona");
+                DialogResult = false;
+                return false;
+            }
+
+            MessageBox.Show("Exito al editar persona");
+            DialogResult = true;
+
+            return true;
+        }
+
         public bool RegistrarEmpleado()
         {
             string puestoSeleccionado = cbPuestos.SelectedItem.ToString();
@@ -248,30 +330,42 @@ namespace SistemaEscolar.Gui.Dialogos
             return true;
         }
 
+        public bool EditarEmpleado()
+        {
+            string curpNueva = tbCurp.Text;
+            string puestoSeleccionado = cbPuestos.SelectedItem.ToString();
+
+            var cu = new CasoUsoActualizarEmpleado();
+
+            bool exito = cu.Ejecutar(curpNueva, puestoSeleccionado);
+
+            if (!exito)
+            {
+                MessageBox.Show("Error al editar empleado");
+                return false;
+            }
+
+            MessageBox.Show("Exito al editar empleado");
+
+            if (puestoSeleccionado == "Maestro")
+            {
+                return EditarProfesor();
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         public bool RegistrarProfesor()
         {
             string idProfesor = tbIdProfesor.Text;
-            int idAcademia = -1;
-            int tipoMiembro = -1;
-
-            // encontrar id de la academia
-            string selectedAcademia = cbAcademias.SelectedItem.ToString();
-            ConsultasGlobales.Academias.ForEach(academia =>
-            {
-                if (academia.Nombre == selectedAcademia)
-                {
-                    idAcademia = academia.Id;
-                    return;
-                }
-            });
-
-            // encontrar id del tipo de miembro
-            string selectedTipoMiembro = cbTipoMiembro.SelectedItem.ToString();
-            tipoMiembro = Util.Datos.Miembros[selectedTipoMiembro];
+            string academia = cbAcademias.SelectedItem.ToString();
+            int tipoMiembro = Util.Datos.Miembros[cbTipoMiembro.SelectedItem.ToString()];
 
             var cu = new CasoUsoAltaProfesor();
 
-            bool exito = cu.Ejecutar(idProfesor, idAcademia, tipoMiembro);
+            bool exito = cu.Ejecutar(idProfesor, academia, tipoMiembro);
 
             if (!exito)
             {
@@ -282,6 +376,27 @@ namespace SistemaEscolar.Gui.Dialogos
 
             MessageBox.Show("Exito al registrar profesor");
             DialogResult = true;
+
+            return true;
+        }
+
+        public bool EditarProfesor()
+        {
+            string idProfesor = tbIdProfesor.Text;
+            string academia = cbAcademias.SelectedItem.ToString();
+            int tipoMiembro = Util.Datos.Miembros[cbTipoMiembro.SelectedItem.ToString()];
+
+            var cu = new CasoUsoActualizarProfesor();
+
+            bool exito = cu.Ejecutar(IdProfesorOriginal, idProfesor, academia, tipoMiembro);
+
+            if (!exito)
+            {
+                MessageBox.Show("Error al editar profesor");
+                return false;
+            }
+
+            MessageBox.Show("Exito al editar profesor");
 
             return true;
         }

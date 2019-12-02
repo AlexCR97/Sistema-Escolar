@@ -65,18 +65,37 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaActualizarAlumno.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaActualizarEmpleado.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaActualizarPersona.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaActualizarProfesor.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistaDetallesEmpleados.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistaCarrerasEspecialidades.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarDireccionPersona.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarVistaDetallesEmpleados2.cs" />
     <Compile Include="Gui\Modelos\ModeloSeccionReportes.cs" />
     <Compile Include="Gui\Secciones\SeccionReportes.xaml.cs">
       <DependentUpon>SeccionReportes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gui\Ventanas\VentanaCarga.xaml.cs">
+      <DependentUpon>VentanaCarga.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Vistas\VistaCarrerasEspecialidades.cs" />
     <Compile Include="Gui\Vistas\VistaDetallesEmpleados.cs" />
     <Compile Include="Gui\Vistas\VistaDetallesEmpleados2.cs" />
+    <Compile Include="Gui\Vistas\VistaDireccionPersona.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarAlumno.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarEmpleado.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarPersona.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarProfesor.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaCarrerasEspecialidades.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaDetallesEmpleados.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoSeleccionarDireccionPersona.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoSeleccionarVistaDetallesEmpleados2.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorListaVistaCarrerasEspecialidades.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListarVistaDetallesEmpleados.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorVistaDetallesEmpleados2.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorVistaDireccionPersona.cs" />
     <Compile Include="Reportes\ReporteDetalleEmpleados.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -145,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Gui\Secciones\SeccionReportes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\Ventanas\VentanaCarga.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

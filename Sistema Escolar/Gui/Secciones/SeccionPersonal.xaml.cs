@@ -1,4 +1,5 @@
-﻿using SistemaEscolar.Gui.Dialogos;
+﻿using SistemaEscolar.Entidades;
+using SistemaEscolar.Gui.Dialogos;
 using SistemaEscolar.Gui.Vistas;
 using SistemaEscolar.Negocios.Casos.Implementaciones;
 using System;
@@ -21,6 +22,8 @@ namespace SistemaEscolar.Gui.Secciones
     public partial class SeccionPersonal : UserControl
     {
         private Dictionary<VistaEmpleados, VistaDetallesEmpleados> Empleados = new Dictionary<VistaEmpleados, VistaDetallesEmpleados>();
+        private List<VistaEmpleados> ListaVistasEmpleados;
+        private List<VistaDetallesEmpleados> ListaVistasDetallesEmpleados;
 
         public SeccionPersonal()
         {
@@ -30,14 +33,76 @@ namespace SistemaEscolar.Gui.Secciones
 
             bRegistrarPersonal.Click += (s, e) => RegistrarPersonal();
 
+            cbFiltroTipoEmpleado.SelectionChanged += (s, e) => FiltrarPorTipoEmpleado();
+            tbFiltroNombre.TextChanged += (s, e) => FiltrarPorNombre();
+            tbFiltroApellidoP.TextChanged += (s, e) => FiltrarPorApellidoP();
+            tbFiltroApellidoM.TextChanged += (s, e) => FiltrarPorApellidoM();
+
             dgEmpleados.MouseLeftButtonUp += (s, e) => LlenarDatosEmpleados();
 
+            LlenarFiltros();
             LlenarTablaEmpleados();
+        }
+
+        private void FiltrarPorNombre()
+        {
+            string nombre = tbFiltroNombre.Text;
+
+            if (String.IsNullOrWhiteSpace(nombre))
+            {
+                dgEmpleados.ItemsSource = ListaVistasEmpleados;
+            }
+            else
+            {
+                dgEmpleados.ItemsSource = ListaVistasEmpleados.FindAll(empleado => empleado.Nombre.Contains(nombre));
+            }
+        }
+
+        private void FiltrarPorApellidoP()
+        {
+            string apellidoP = tbFiltroApellidoP.Text;
+
+            if (String.IsNullOrWhiteSpace(apellidoP))
+            {
+                dgEmpleados.ItemsSource = ListaVistasEmpleados;
+            }
+            else
+            {
+                dgEmpleados.ItemsSource = ListaVistasEmpleados.FindAll(empleado => empleado.ApellidoP.Contains(apellidoP));
+            }
+        }
+
+        private void FiltrarPorApellidoM()
+        {
+            string apellidoM = tbFiltroApellidoM.Text;
+
+            if (String.IsNullOrWhiteSpace(apellidoM))
+            {
+                dgEmpleados.ItemsSource = ListaVistasEmpleados;
+            }
+            else
+            {
+                dgEmpleados.ItemsSource = ListaVistasEmpleados.FindAll(empleado => empleado.ApellidoM.Contains(apellidoM));
+            }
+        }
+
+        private void FiltrarPorTipoEmpleado()
+        {
+            string tipoEmpleado = cbFiltroTipoEmpleado.SelectedItem.ToString();
+
+            if (tipoEmpleado == "Todos")
+            {
+                dgEmpleados.ItemsSource = ListaVistasEmpleados;
+            }
+            else
+            {
+                dgEmpleados.ItemsSource = ListaVistasEmpleados.FindAll(empleado => empleado.Puesto == tipoEmpleado);
+            }
         }
 
         private void EditarPersonal()
         {
-            VistaEmpleados empleadoSeleccionado = dgEmpleados.SelectedItem as VistaEmpleados;
+            var empleadoSeleccionado = dgEmpleados.SelectedItem as VistaEmpleados;
 
             if (empleadoSeleccionado == null)
                 return;
@@ -78,7 +143,7 @@ namespace SistemaEscolar.Gui.Secciones
             tbFechaNac.Text = $"Fecha de nacimiento: {DateTime.Parse(empleado.FechaNacimiento).ToShortDateString()}";
             tbCurp.Text = $"CURP: {empleado.Curp}";
 
-            tbCorreo.Text = "correo@ejemplo.com";
+            tbCorreo.Text = Util.Datos.CorreoDeProfesor(empleado.Nombre.ToLower(), empleado.ApellidoPaterno.ToLower());
             tbTelefono.Text = empleado.Telefono;
             tbDireccion.Text = empleado.Direccion;
 
@@ -87,23 +152,32 @@ namespace SistemaEscolar.Gui.Secciones
             tbHorario.Text = "7:00am - 3:15pm";
         }
 
+        private void LlenarFiltros()
+        {
+            List<Empleos> empleos = Util.ConsultasGlobales.Empleos();
+            empleos.Insert(0, new Empleos() { Puesto = "Todos" });
+
+            cbFiltroTipoEmpleado.ItemsSource = empleos;
+            cbFiltroTipoEmpleado.SelectedIndex = 0;
+        }
+
         private void LlenarTablaEmpleados()
         {
             var cuVistas = new CasoUsoListarVistaEmpleados();
-            List<VistaEmpleados> vistas = cuVistas.Ejecutar();
+            ListaVistasEmpleados = cuVistas.Ejecutar();
 
             var cuVistasDetalles = new CasoUsoListarVistaDetallesEmpleados();
-            List<VistaDetallesEmpleados> vistasDetalles = cuVistasDetalles.Ejecutar();
+            ListaVistasDetallesEmpleados = cuVistasDetalles.Ejecutar();
 
-            for (int i = 0; i < vistas.Count; i++)
+            for (int i = 0; i < ListaVistasEmpleados.Count; i++)
             {
-                var vistaEmpleado = vistas[i];
-                var vistaDetalles = vistasDetalles[i];
+                var vistaEmpleado = ListaVistasEmpleados[i];
+                var vistaDetalles = ListaVistasDetallesEmpleados[i];
 
                 Empleados[vistaEmpleado] = vistaDetalles;
             }
 
-            dgEmpleados.ItemsSource = vistas;
+            dgEmpleados.ItemsSource = ListaVistasEmpleados;
         }
     }
 }

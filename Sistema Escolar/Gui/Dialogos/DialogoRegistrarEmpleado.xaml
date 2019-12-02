@@ -127,7 +127,7 @@
                     <!--Estado-->
                     <TextBlock Text="Estado"/>
                     <ComboBox x:Name="cbEstado" Height="30" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
-                    
+
                     <!---->
                     <!--DATOS LABORALES-->
                     <!---->
@@ -148,7 +148,7 @@
                     <!--Tipo de miembro-->
                     <TextBlock Text="Tipo de miembro"/>
                     <ComboBox x:Name="cbTipoMiembro" Height="30" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
-                    
+
                     <!--Academia-->
                     <TextBlock Text="Academia"/>
                     <ComboBox x:Name="cbAcademias" Height="30" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 15"/>
@@ -158,5 +158,4 @@
             <Button x:Name="bRegistrar" Grid.Row="2" Content="Registrar" util:CornerRadiusSetter.CornerRadius="10"/>
         </Grid>
     </Border>
-
 </Window>

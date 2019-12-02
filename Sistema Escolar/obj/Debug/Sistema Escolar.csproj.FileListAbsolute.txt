@@ -61,3 +61,5 @@ C:\Users\carp_\source\repos\Sistema Escolar\Sistema Escolar\obj\Debug\SistemaEsc
 C:\Users\carp_\source\repos\Sistema Escolar\Sistema Escolar\obj\Debug\SistemaEscolar.pdb
 C:\Users\carp_\source\repos\Sistema Escolar\Sistema Escolar\obj\Debug\Gui\Secciones\SeccionReportes.g.cs
 C:\Users\carp_\source\repos\Sistema Escolar\Sistema Escolar\obj\Debug\Gui\Secciones\SeccionReportes.baml
+C:\Users\carp_\source\repos\Sistema Escolar\Sistema Escolar\obj\Debug\Gui\Ventanas\VentanaCarga.g.cs
+C:\Users\carp_\source\repos\Sistema Escolar\Sistema Escolar\obj\Debug\Gui\Ventanas\VentanaCarga.baml

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SistemaEscolar.Datos.Consultas.Implementaciones
 {
-    public class ConsultaListarVistaAlumnos : Consulta
+    public class ConsultaListarVistaCarrerasEspecialidades : Consulta
     {
-        public ConsultaListarVistaAlumnos(params object[] args) : base(args) { }
+        public ConsultaListarVistaCarrerasEspecialidades(params object[] args) : base(args) { }
 
         protected override Dictionary<string, object> DefinirParametros(params object[] args)
         {
@@ -17,7 +17,7 @@ namespace SistemaEscolar.Datos.Consultas.Implementaciones
 
         protected override string DefinirQuery()
         {
-            return "select * from VistaAlumnos";
+            return "select * from CarrerasEspecialidades";
         }
     }
 }

@@ -13,5 +13,6 @@ namespace SistemaEscolar.Gui.Vistas
         public string ApellidoP { get; set; }
         public string ApellidoM { get; set; }
         public string Carrera { get; set; }
+        public string Tutor { get; set; }
     }
 }

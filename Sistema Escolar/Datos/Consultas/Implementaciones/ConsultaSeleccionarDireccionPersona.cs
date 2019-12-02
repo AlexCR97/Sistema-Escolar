@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 
 namespace SistemaEscolar.Datos.Consultas.Implementaciones
 {
-    public class ConsultaListarVistaAlumnos : Consulta
+    public class ConsultaSeleccionarDireccionPersona : Consulta
     {
-        public ConsultaListarVistaAlumnos(params object[] args) : base(args) { }
-
         protected override Dictionary<string, object> DefinirParametros(params object[] args)
         {
-            return new Dictionary<string, object>();
+            return new Dictionary<string, object>()
+            {
+                ["@IdPersona"] = args[0],
+            };
         }
 
         protected override string DefinirQuery()
         {
-            return "select * from VistaAlumnos";
+            return "select * from DireccionesPersonas where [Id persona] = @IdPersona";
         }
     }
 }
