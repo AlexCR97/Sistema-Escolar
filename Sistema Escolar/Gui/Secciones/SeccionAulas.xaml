@@ -12,7 +12,7 @@
     <Border Padding="20">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="400"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
@@ -27,39 +27,26 @@
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
                 <!--Filtros-->
                 <ComboBox Grid.Column="0" Grid.Row="0" Padding="10 0" VerticalContentAlignment="Center" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 5 5">
-                    <ComboBoxItem Content="Item"/>
-                    <ComboBoxItem Content="Item"/>
-                    <ComboBoxItem Content="Item"/>
+                    <ComboBoxItem Content="SALON"/>
+                    <ComboBoxItem Content="CENTRO DE COMPUTO"/>
+                    <ComboBoxItem Content="TALLER"/>
+                    <ComboBoxItem Content="LABORATORIO"/>
                 </ComboBox>
 
                 <TextBox Grid.Column="1" Grid.Row="0" Text="Matricula" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="5 5 0 5"/>
-                
+
                 <TextBox Grid.Column="2" Grid.Row="0" Text="Matricula" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="5 5 0 5"/>
-                
+
                 <TextBox Grid.Column="3" Grid.Row="0" Text="Matricula" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="5 5 0 5"/>
 
-                <TextBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="Matricula" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 0 5"/>
-
-                <ComboBox Grid.Column="2" Grid.Row="1" Padding="10 0" VerticalContentAlignment="Center" util:CornerRadiusSetter.CornerRadius="10" Margin="5 5 0 5">
-                    <ComboBoxItem Content="Item"/>
-                    <ComboBoxItem Content="Item"/>
-                    <ComboBoxItem Content="Item"/>
-                </ComboBox>
-
-                <ComboBox Grid.Column="3" Grid.Row="1" Padding="10 0" VerticalContentAlignment="Center" util:CornerRadiusSetter.CornerRadius="10" Margin="5 5 0 5">
-                    <ComboBoxItem Content="Item"/>
-                    <ComboBoxItem Content="Item"/>
-                    <ComboBoxItem Content="Item"/>
-                </ComboBox>
-
                 <!--Aulas-->
-                <ListView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4" Margin="0 20 0 0" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Aulas}">
+                <ListView x:Name="lvAulas"
+                    Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Margin="0 20 0 0" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Aulas}">
 
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
@@ -75,13 +62,9 @@
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Text="Plantilla" Grid.Column="0"/>
-                                    <TextBlock Text="Plantilla" Grid.Column="1"/>
-                                    <TextBlock Text="Plantilla" Grid.Column="2"/>
+                                    <TextBlock Text="{Binding}"/>
                                 </Grid>
                             </Border>
                         </DataTemplate>
@@ -101,7 +84,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition Width="120"/>
                         </Grid.ColumnDefinitions>
-                        
+
                         <Border Padding="5" Grid.Column="0" >
                             <Button Content="Editar" util:CornerRadiusSetter.CornerRadius="10"/>
                         </Border>
@@ -111,179 +94,178 @@
                         </Border>
                     </Grid>
 
-                    <!--Informacion-->
-                    <TextBlock Text="1202" TextAlignment="Center" FontSize="18"/>
-                    <TextBlock Text="Salon de clases" TextAlignment="Center" FontSize="18"/>
-                    <TextBlock Text="Capacidad: 40" TextAlignment="Center" FontSize="18"/>
-                    
                     <!--Horarios-->
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="160"/>
-                            <ColumnDefinition Width="160"/>
-                            <ColumnDefinition Width="160"/>
-                            <ColumnDefinition Width="160"/>
-                            <ColumnDefinition Width="160"/>
-                            <ColumnDefinition Width="160"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="40"/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
+                    <ScrollViewer>
 
-                        <!--Dias de la semana-->
-                        <Border Grid.Column="0" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
-                            <TextBlock Text="Lunes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                        <Border Grid.Column="1" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
-                            <TextBlock Text="Lunes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                        <Border Grid.Column="2" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
-                            <TextBlock Text="Lunes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                        <Border Grid.Column="3" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
-                            <TextBlock Text="Lunes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                        <Border Grid.Column="4" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
-                            <TextBlock Text="Lunes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                        <Border Grid.Column="5" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
-                            <TextBlock Text="Lunes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
 
-                        <!--Horas Lunes-->
-                        <ListView Grid.Column="0" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
+                        <Grid Margin="0 40 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="160"/>
+                                <ColumnDefinition Width="160"/>
+                                <ColumnDefinition Width="160"/>
+                                <ColumnDefinition Width="160"/>
+                                <ColumnDefinition Width="160"/>
+                                <ColumnDefinition Width="160"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
 
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="Background" Value="Transparent"/>
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                </Style>
-                            </ListView.ItemContainerStyle>
+                            <!--Dias de la semana-->
+                            <Border Grid.Column="0" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
+                                <TextBlock Text="Lunes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                            <Border Grid.Column="1" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
+                                <TextBlock Text="Martes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                            <Border Grid.Column="2" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
+                                <TextBlock Text="Miercoles" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                            <Border Grid.Column="3" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
+                                <TextBlock Text="Jueves" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                            <Border Grid.Column="4" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
+                                <TextBlock Text="Viernes" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                            <Border Grid.Column="5" CornerRadius="10" Background="LightGray" Cursor="Hand" Margin="5">
+                                <TextBlock Text="Sabado" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
 
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
-                                        <StackPanel>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                        </StackPanel>
-                                    </Border>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <!--Horas Martes-->
-                        <ListView Grid.Column="1" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
+                            <!--Horas Lunes-->
+                            <ListView x:Name="lvLunes" Grid.Column="0" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
 
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="Background" Value="Transparent"/>
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                </Style>
-                            </ListView.ItemContainerStyle>
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
 
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
-                                        <StackPanel>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                        </StackPanel>
-                                    </Border>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <!--Horas Miercoles-->
-                        <ListView Grid.Column="2" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding NombreMateria}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                                <TextBlock Text="{Binding NombreProfesor}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                                <TextBlock Text="{Binding Hora}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <!--Horas Martes-->
+                            <ListView x:Name="lvMartes" Grid.Column="1" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
 
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="Background" Value="Transparent"/>
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                </Style>
-                            </ListView.ItemContainerStyle>
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
 
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
-                                        <StackPanel>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                        </StackPanel>
-                                    </Border>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <!--Horas Jueves-->
-                        <ListView Grid.Column="3" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding NombreMateria}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                                <TextBlock Text="{Binding NombreProfesor}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                                <TextBlock Text="{Binding Hora}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <!--Horas Miercoles-->
+                            <ListView x:Name="lvMiercoles" Grid.Column="2" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
 
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="Background" Value="Transparent"/>
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                </Style>
-                            </ListView.ItemContainerStyle>
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
 
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
-                                        <StackPanel>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                        </StackPanel>
-                                    </Border>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <!--Horas Viernes-->
-                        <ListView Grid.Column="4" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding NombreMateria}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                                <TextBlock Text="{Binding NombreProfesor}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                                <TextBlock Text="{Binding Hora}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <!--Horas Jueves-->
+                            <ListView x:Name="lvJueves" Grid.Column="3" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
 
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="Background" Value="Transparent"/>
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                </Style>
-                            </ListView.ItemContainerStyle>
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
 
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
-                                        <StackPanel>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                        </StackPanel>
-                                    </Border>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <!--Horas Sabado-->
-                        <ListView Grid.Column="5" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding NombreMateria}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                                <TextBlock Text="{Binding NombreProfesor}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                                <TextBlock Text="{Binding Hora}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <!--Horas Viernes-->
+                            <ListView x:Name="lvViernes" Grid.Column="4" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
 
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="Background" Value="Transparent"/>
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                </Style>
-                            </ListView.ItemContainerStyle>
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
 
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
-                                        <StackPanel>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                            <TextBlock Text="Plantilla" Margin="0 5 0 0" TextAlignment="Center"/>
-                                        </StackPanel>
-                                    </Border>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </Grid>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding NombreMateria}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                                <TextBlock Text="{Binding NombreProfesor}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                                <TextBlock Text="{Binding Hora}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <!--Horas Sabado-->
+                            <ListView x:Name="lvSabado" Grid.Column="5" Grid.Row="1" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Asignaturas}">
+
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border CornerRadius="10" Padding="15" Background="LightGray" Cursor="Hand">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding NombreMateria}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                                <TextBlock Text="{Binding NombreProfesor}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                                <TextBlock Text="{Binding Hora}" Margin="0 5 0 0" TextAlignment="Center"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </ScrollViewer>
                 </StackPanel>
             </Border>
         </Grid>

@@ -22,6 +22,9 @@ namespace SistemaEscolar.Gui.Dialogos
 {
     public partial class DialogoRegistrarAlumno : Window
     {
+        // testing git ingore
+        // testing git ingore 2
+
         private int cantidadAlumnosRegistrados;
         private string CurpOriginal;
 

@@ -1,18 +1,8 @@
 ﻿using SistemaEscolar.Gui.Dialogos;
-using System;
+using SistemaEscolar.Gui.Vistas;
+using SistemaEscolar.Negocios.Casos.Implementaciones;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SistemaEscolar.Gui.Secciones
 {
@@ -25,6 +15,8 @@ namespace SistemaEscolar.Gui.Secciones
         {
             InitializeComponent();
 
+            LlenarListaCarreras();
+
             bRegistrarCarrera.Click += (s, e) =>
             {
                 RegistrarCarrera();
@@ -35,6 +27,29 @@ namespace SistemaEscolar.Gui.Secciones
         {
             var dialogo = new DialogoRegistrarCarrera();
             dialogo.Show();
+        }
+
+        private void LlenarDatosCarrera()
+        {
+
+        }
+
+        private void LlenarListaCarreras()
+        {
+            //var cuVistasCarreras = new CasoUsoListarVistaCarreras();
+            //var vistasCarreras = cuVistasCarreras.Ejecutar();
+
+            var carreras = new List<VistaCarrera>();
+            carreras.Add(new VistaCarrera()
+            {
+                UrlImagen = "foo",
+                Codigo = "ISC",
+                Nombre = "Ingenieria en Sistemas Computacionales",
+                Especialidad = "Administracion de Base de Datos",
+                Coordinador = "Ing. Alejandro Castillo"
+            });
+
+            lvCarreras.ItemsSource = carreras;
         }
     }
 }
