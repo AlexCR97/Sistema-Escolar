@@ -1,12 +1,3 @@
-.suo
-storage.ide
-storage.ide-wal
-Sistema Escolar.csproj
-SistemaEscolar.exe
-SistemaEscolar.pdb
-Sistema Escolar.csprojAssemblyReference.cache
-SistemaEscolar.exe
-SistemaEscolar.g.resources
-SistemaEscolar.pdb
-SistemaEscolar_MarkupCompile.cache
-SistemaEscolar_MarkupCompile.i.cache
+.vs/*
+obj/*
+bin/*
