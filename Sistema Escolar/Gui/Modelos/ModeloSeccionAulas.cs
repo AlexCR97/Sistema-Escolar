@@ -25,26 +25,7 @@ namespace SistemaEscolar.Gui.Modelos
 
         public ModeloSeccionAulas()
         {
-            for (int i = 1; i <= 20; i++)
-            {
-                Aulas.Add(new Aula()
-                {
-                    Edificio = i,
-                    Planta = i,
-                    Salon = i,
-                    Capacidad = 40,
-                });
-            }
-
-            for (int i = 1; i <= 20; i++)
-            {
-                Asignaturas.Add(new Asignatura()
-                {
-                    Materia = i.ToString(),
-                    Profesor = i.ToString(),
-                    Horario = i.ToString(),
-                });
-            }
+            
         }
     }
 }

@@ -60,7 +60,8 @@
                 </ComboBox>
 
                 <!--Aulas-->
-                <ListView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4" Margin="0 20 0 0" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Aulas}">
+                <ListView x:Name="lvAulas"
+                    Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4" Margin="0 20 0 0" Background="Transparent" BorderThickness="0" ItemsSource="{Binding Aulas}">
 
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
@@ -76,13 +77,9 @@
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Text="Plantilla" Grid.Column="0"/>
-                                    <TextBlock Text="Plantilla" Grid.Column="1"/>
-                                    <TextBlock Text="Plantilla" Grid.Column="2"/>
+                                    <TextBlock Text="{Binding}"/>
                                 </Grid>
                             </Border>
                         </DataTemplate>

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using SistemaEscolar.Entidades;
+using SistemaEscolar.Gui.Vistas;
+using SistemaEscolar.Negocios.Casos.Implementaciones;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +31,38 @@ namespace SistemaEscolar.Gui.Secciones
             {
                 RegistrarAula();
             };
+
+            CargarAulas();
+        }
+
+        private class GrupoComparer : IEqualityComparer<Grupo>
+        {
+            public bool Equals(Grupo x, Grupo y)
+            {
+                return x.Aula.Trim() == y.Aula.Trim();
+            }
+
+            public int GetHashCode(Grupo obj)
+            {
+                return base.GetHashCode();
+            }
+        }
+
+        private void CargarAulas()
+        {
+            var cuListarGrupos = new CasoUsoListarGrupos();
+            var grupos = cuListarGrupos.Ejecutar();
+
+            grupos = grupos.Distinct(new GrupoComparer()).ToList();
+
+            lvAulas.ItemsSource = grupos;
+
+            //var vistasGrupo = new List<VistaGrupo>();
+
+            //foreach (var grupo in grupos)
+            //{
+
+            //}
         }
 
         private void RegistrarAula()

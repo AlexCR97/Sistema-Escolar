@@ -67,6 +67,16 @@ namespace SistemaEscolar.Gui.Util
             { "Sabado", 6 }
         };
 
+        public static readonly Dictionary<int, string> SemanaDias = new Dictionary<int, string>()
+        {
+            { 1, "Lunes" },
+            { 2, "Martes"},
+            { 3, "Miercoles" },
+            { 4, "Jueves" },
+            { 5, "Viernes" },
+            { 6, "Sabado"}
+        };
+
         public static readonly Dictionary<string, int> HorasClases = new Dictionary<string, int>()
         {
             { "7:00", 1 },
@@ -82,6 +92,23 @@ namespace SistemaEscolar.Gui.Util
             { "16:10", 11 },
             { "17:05", 12 },
             { "18:00", 13 }
+        };
+
+        public static readonly Dictionary<int, string> ClasesHoras = new Dictionary<int, string>()
+        {
+            { 1, "7:00" },
+            { 2, "7:55" },
+            { 3, "8:50" },
+            { 4, "9:45" },
+            { 5, "10:40" },
+            { 6, "11:35" },
+            { 7, "12:30" },
+            { 8, "13:25" },
+            { 9, "14:20" },
+            { 10, "15:15" },
+            { 11, "16:10" },
+            { 12, "17:05" },
+            { 13, "18:00" }
         };
 
         public static List<int> Anios()

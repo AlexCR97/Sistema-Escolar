@@ -105,6 +105,7 @@
     </Compile>
     <Compile Include="Datos\Conexion.cs" />
     <Compile Include="Datos\Consultas\Consulta.cs" />
+    <Compile Include="Datos\Consultas\ConsultaListarGrupos.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaAltaCarrera.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaAltaGrupo.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarAlumnos.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="Entidades\Carrera.cs" />
     <Compile Include="Entidades\Coordinardor.cs" />
     <Compile Include="Entidades\Especialidad.cs" />
+    <Compile Include="Entidades\Grupo.cs" />
     <Compile Include="Entidades\Materia.cs" />
     <Compile Include="Entidades\Persona.cs" />
     <Compile Include="Entidades\Profesor.cs" />
@@ -192,6 +194,7 @@
     </Compile>
     <Compile Include="Gui\Vistas\VistaAlumno.cs" />
     <Compile Include="Gui\Vistas\VistaDireccion.cs" />
+    <Compile Include="Gui\Vistas\VistaGrupo.cs" />
     <Compile Include="Negocios\Casos\CasoUso.cs" />
     <Compile Include="Negocios\Casos\CasoUsoEscritura.cs" />
     <Compile Include="Negocios\Casos\CasoUsoLectura.cs" />
@@ -200,6 +203,7 @@
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarCoordinadores.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarEspecialidades.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarEspecialidadesPorCarrera.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarGrupos.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarMaterias.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarProfesores.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarTutores.cs" />
@@ -216,6 +220,7 @@
     <Compile Include="Negocios\Presentadores\PresentadorAdministrador.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListaAlumnos.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListaCoordinadores.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorListaGrupos.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListaMaterias.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListaProfesores.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListarCarreras.cs" />
