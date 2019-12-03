@@ -54,16 +54,7 @@ namespace SistemaEscolar.Gui.Dialogos
 
         private void CargarListaCoordinadores()
         {
-            // var coordinadores = new CasoUsoListarCoordinadores().Ejecutar();
-
-            var coordinadores = new List<Coordinardor>();
-            coordinadores.Add(new Coordinardor()
-            {
-                Nombre = "Hector",
-                ApellidoPaterno = "Flores",
-                ApellidoMaterno = "No se que madres"
-            });
-
+            List<Coordinardor> coordinadores = new CasoUsoListarCoordinadores().Ejecutar();
             cbCoordinador.ItemsSource = coordinadores;
         }
     }

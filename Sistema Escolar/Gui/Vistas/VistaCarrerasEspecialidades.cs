@@ -16,5 +16,12 @@ namespace SistemaEscolar.Gui.Vistas
         public string ApellidoMaternoCoordinador { get; set; }
         public int IdEspecialidad { get; set; }
         public string Especialidad { get; set; }
+
+        public string NombreCoordinadorCompleto
+        {
+            get {
+                return $"{NombreCoordinador} {ApellidoPaternoCoordinador} {ApellidoMaternoCoordinador}";
+            }
+        }
     }
 }

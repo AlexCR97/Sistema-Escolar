@@ -80,8 +80,10 @@
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarAulas.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarMaterias.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarProfesores.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistaDetallesAlumnos.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistaDetallesEmpleados.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistaCarrerasEspecialidades.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistasMateriasConCarrera.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarDireccionPersona.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarVistaDetallesEmpleados2.cs" />
     <Compile Include="Entidades\Coordinardor.cs" />
@@ -99,6 +101,7 @@
     <Compile Include="Gui\Vistas\VistaDetallesEmpleados2.cs" />
     <Compile Include="Gui\Vistas\VistaDireccionPersona.cs" />
     <Compile Include="Gui\Vistas\VistaGrupo.cs" />
+    <Compile Include="Gui\Vistas\VistaMateriasConCarrera.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarAcademia.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarActividad.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarAlumno.cs" />
@@ -114,7 +117,9 @@
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarMaterias.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarProfesores.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaCarrerasEspecialidades.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaDetallesAlumno.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaDetallesEmpleados.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaMateriasConCarrera.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoRegistrarCarrera.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoRegistrarGrupo.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoSeleccionarDireccionPersona.cs" />
@@ -127,6 +132,8 @@
     <Compile Include="Negocios\Presentadores\PresentadorListaProfesores.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListaVistaCarrerasEspecialidades.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListarVistaDetallesEmpleados.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorListaVistaDetallesAlumno.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorListaVistaMateriasConCarrera.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorVistaDetallesEmpleados2.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorVistaDireccionPersona.cs" />
     <Compile Include="Reportes\ReporteDetalleEmpleados.cs">

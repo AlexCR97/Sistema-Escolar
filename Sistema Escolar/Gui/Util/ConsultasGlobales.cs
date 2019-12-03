@@ -11,6 +11,35 @@ namespace SistemaEscolar.Gui.Util
 {
     public class ConsultasGlobales
     {
+        #region Vistas Materias con Carreras
+        private static List<VistaMateriasConCarrera> vistaMateriasConCarreras;
+
+        public static List<VistaMateriasConCarrera> VistasMateriasConCarreras
+        {
+            get {
+                if (vistaMateriasConCarreras == null)
+                    vistaMateriasConCarreras = new CasoUsoListarVistaMateriasConCarrera().Ejecutar();
+
+                return vistaMateriasConCarreras;
+            }
+        }
+        #endregion
+
+        #region Detalles alumnos
+        private static List<VistaDetallesAlumno> vistasDetallesAlumnos;
+
+        public static List<VistaDetallesAlumno> VistasDetallesAlumnos
+        {
+            get {
+                if (vistasDetallesAlumnos == null)
+                    vistasDetallesAlumnos = new CasoUsoListarVistaDetallesAlumno().Ejecutar();
+
+                return vistasDetallesAlumnos;
+            }
+        }
+
+        #endregion
+
         #region Carreras
         private static List<Carrera> carreras;
 
