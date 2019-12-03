@@ -73,6 +73,7 @@
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaActualizarEspecialidad.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaActualizarPersona.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaActualizarProfesor.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaAgregarDatosGrupo.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaAltaCarrera.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaAltaGrupo.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaInsertarActividad.cs" />
@@ -81,12 +82,14 @@
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaInsertarEspacialidad.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarAulas.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarMaterias.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarMateriasCarreras.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarProfesores.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistaCoordinadores.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistaDetallesAlumnos.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistaDetallesEmpleados.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistaCarrerasEspecialidades.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistasMateriasConCarrera.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaRegistrarMateria.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarDireccionPersona.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaSeleccionarVistaDetallesEmpleados2.cs" />
     <Compile Include="Entidades\Coordinardor.cs" />
@@ -94,6 +97,9 @@
     <Compile Include="Entidades\Profesor.cs" />
     <Compile Include="Gui\Dialogos\DialogoRegistrarEspecialidad.xaml.cs">
       <DependentUpon>DialogoRegistrarEspecialidad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Dialogos\DialogoRegistrarMateria.xaml.cs">
+      <DependentUpon>DialogoRegistrarMateria.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gui\Modelos\ModeloSeccionReportes.cs" />
     <Compile Include="Gui\Secciones\SeccionReportes.xaml.cs">
@@ -117,6 +123,7 @@
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarEspecialidad.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarPersona.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarProfesor.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoAgregarDatosGrupo.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoInsertarActividad.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoInsertarCalificacion.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoInsertarCarrera.cs" />
@@ -124,6 +131,7 @@
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarCoordinadores.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarGrupos.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarMaterias.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarMateriasCarreras.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarProfesores.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaCarrerasEspecialidades.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaCoordinadores.cs" />
@@ -132,6 +140,7 @@
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaMateriasConCarrera.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoRegistrarCarrera.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoRegistrarGrupo.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoRegistrarMateria.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoSeleccionarDireccionPersona.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoSeleccionarVistaDetallesEmpleados2.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\ConsultaListarCoordinadores.cs" />
@@ -139,6 +148,7 @@
     <Compile Include="Negocios\Presentadores\PresentadorListaCoordinadores.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListaGrupos.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListaMaterias.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorListaMateriasCarreras.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListaProfesores.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListaVistaCarrerasEspecialidades.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListarVistaDetallesEmpleados.cs" />
@@ -193,6 +203,10 @@
     <Page Include="Gui\Dialogos\DialogoRegistrarEspecialidad.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\Dialogos\DialogoRegistrarMateria.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Gui\Secciones\SeccionAlumnos.xaml">
       <SubType>Designer</SubType>
