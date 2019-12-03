@@ -6,18 +6,13 @@ using System.Threading.Tasks;
 
 namespace SistemaEscolar.Gui.Vistas
 {
-    public class VistaDetallesEmpleados
+    public class VistaCoordinador
     {
+        public int IdPersona { get; set; }
+        public int IdEmpleado { get; set; }
         public string Nombre { get; set; }
         public string ApellidoPaterno { get; set; }
         public string ApellidoMaterno { get; set; }
-        public string Puesto { get; set; }
-        public string IdProfesor { get; set; }
-        public string Academia { get; set; }
-        public string FechaNacimiento { get; set; }
-        public string Curp { get; set; }
-        public string Telefono { get; set; }
-        public string Direccion { get; set; }
 
         public override string ToString()
         {

@@ -1,4 +1,6 @@
 ﻿using SistemaEscolar.Entidades;
+using SistemaEscolar.Gui.Util;
+using SistemaEscolar.Gui.Vistas;
 using SistemaEscolar.Negocios.Casos.Implementaciones;
 using System;
 using System.Collections.Generic;
@@ -21,23 +23,56 @@ namespace SistemaEscolar.Gui.Dialogos
     /// </summary>
     public partial class DialogoRegistrarCarrera : Window
     {
-        public DialogoRegistrarCarrera()
+        private TipoOperacion TipoOperacion;
+
+        public DialogoRegistrarCarrera(TipoOperacion tipoOperacion)
         {
             InitializeComponent();
 
+            TipoOperacion = tipoOperacion;
+
+            switch (TipoOperacion)
+            {
+                case TipoOperacion.Editar:
+                {
+                    bRegistrar.Content = "Editar";
+                    break;
+                }
+
+                case TipoOperacion.Registrar:
+                {
+                    break;
+                }
+            }
+
             CargarListaCoordinadores();
 
-            bRegistrar.Click += (s, e) => { RegistrarUsuario(); };
+            bRegistrar.Click += (s, e) =>
+            {
+                switch (TipoOperacion)
+                {
+                    case TipoOperacion.Registrar:
+                    {
+                        RegistrarCarrera();
+                        break;
+                    }
+
+                    case TipoOperacion.Editar:
+                    {
+                        break;
+                    }
+                }
+            };
         }
 
-        private void RegistrarUsuario()
+        private void RegistrarCarrera()
         {
-            var carrera = tbCarrera.Text;
-            var coordinador = cbCoordinador.SelectedItem.ToString().Split(' ');
+            string carrera = tbCarrera.Text;
+            VistaDetallesEmpleados empleadoSeleccionado = cbCoordinador.SelectedItem as VistaDetallesEmpleados;
 
-            var nombreCoordinador = coordinador[0].ToString();
-            var apellidoPaternoCoordinador = coordinador[1].ToString();
-            var apellidoMaternoCoordinador = coordinador[2].ToString();
+            string nombreCoordinador = empleadoSeleccionado.Nombre;
+            string apellidoPaternoCoordinador = empleadoSeleccionado.ApellidoPaterno;
+            string apellidoMaternoCoordinador = empleadoSeleccionado.ApellidoMaterno;
 
             var casoUso = new CasoUsoRegistrarCarrera();
 
@@ -50,12 +85,18 @@ namespace SistemaEscolar.Gui.Dialogos
             }
 
             MessageBox.Show("Exito registrando la carrera!");
+
+            var dialogo = new DialogoRegistrarEspecialidad(TipoOperacion.Registrar, carrera);
+            dialogo.ShowDialog();
+
+            Close();
         }
 
         private void CargarListaCoordinadores()
         {
-            List<Coordinardor> coordinadores = new CasoUsoListarCoordinadores().Ejecutar();
-            cbCoordinador.ItemsSource = coordinadores;
+            List<VistaDetallesEmpleados> empleados = ConsultasGlobales.VistasDetallesEmpleados;
+            cbCoordinador.ItemsSource = empleados;
+            cbCoordinador.SelectedIndex = 0;
         }
     }
 }

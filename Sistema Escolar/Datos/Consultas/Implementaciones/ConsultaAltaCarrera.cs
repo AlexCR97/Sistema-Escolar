@@ -4,6 +4,8 @@ namespace SistemaEscolar.Datos.Consultas.Implementaciones
 {
     class ConsultaAltaCarrera : Consulta
     {
+        public ConsultaAltaCarrera(params object[] args) : base(args) { }
+
         protected override Dictionary<string, object> DefinirParametros(params object[] args)
         {
             return new Dictionary<string, object>()

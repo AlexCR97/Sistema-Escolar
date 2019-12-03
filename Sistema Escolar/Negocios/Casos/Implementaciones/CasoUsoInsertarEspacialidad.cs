@@ -8,11 +8,11 @@ using SistemaEscolar.Datos.Consultas.Implementaciones;
 
 namespace SistemaEscolar.Negocios.Casos.Implementaciones
 {
-    class CasoUsoRegistrarCarrera : CasoUsoEscritura
+    public class CasoUsoInsertarEspacialidad : CasoUsoEscritura
     {
         protected override Consulta DefinirConsulta(params object[] args)
         {
-            return new ConsultaAltaCarrera(args);
+            return new ConsultaInsertarEspacialidad(args);
         }
     }
 }

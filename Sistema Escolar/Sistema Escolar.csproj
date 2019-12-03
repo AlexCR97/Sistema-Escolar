@@ -77,9 +77,12 @@
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaAltaGrupo.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaInsertarActividad.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaInsertarCalificacion.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaInsertarCarrera.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaInsertarEspacialidad.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarAulas.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarMaterias.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarProfesores.cs" />
+    <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistaCoordinadores.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistaDetallesAlumnos.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistaDetallesEmpleados.cs" />
     <Compile Include="Datos\Consultas\Implementaciones\ConsultaListarVistaCarrerasEspecialidades.cs" />
@@ -89,6 +92,9 @@
     <Compile Include="Entidades\Coordinardor.cs" />
     <Compile Include="Entidades\Grupo.cs" />
     <Compile Include="Entidades\Profesor.cs" />
+    <Compile Include="Gui\Dialogos\DialogoRegistrarEspecialidad.xaml.cs">
+      <DependentUpon>DialogoRegistrarEspecialidad.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Gui\Modelos\ModeloSeccionReportes.cs" />
     <Compile Include="Gui\Secciones\SeccionReportes.xaml.cs">
       <DependentUpon>SeccionReportes.xaml</DependentUpon>
@@ -97,6 +103,7 @@
       <DependentUpon>VentanaCarga.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gui\Vistas\VistaCarrerasEspecialidades.cs" />
+    <Compile Include="Gui\Vistas\VistaCoordinador.cs" />
     <Compile Include="Gui\Vistas\VistaDetallesEmpleados.cs" />
     <Compile Include="Gui\Vistas\VistaDetallesEmpleados2.cs" />
     <Compile Include="Gui\Vistas\VistaDireccionPersona.cs" />
@@ -112,11 +119,14 @@
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoActualizarProfesor.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoInsertarActividad.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoInsertarCalificacion.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoInsertarCarrera.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoInsertarEspacialidad.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarCoordinadores.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarGrupos.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarMaterias.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarProfesores.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaCarrerasEspecialidades.cs" />
+    <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaCoordinadores.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaDetallesAlumno.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaDetallesEmpleados.cs" />
     <Compile Include="Negocios\Casos\Implementaciones\CasoUsoListarVistaMateriasConCarrera.cs" />
@@ -132,6 +142,7 @@
     <Compile Include="Negocios\Presentadores\PresentadorListaProfesores.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListaVistaCarrerasEspecialidades.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListarVistaDetallesEmpleados.cs" />
+    <Compile Include="Negocios\Presentadores\PresentadorListaVistaCoordinador.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListaVistaDetallesAlumno.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorListaVistaMateriasConCarrera.cs" />
     <Compile Include="Negocios\Presentadores\PresentadorVistaDetallesEmpleados2.cs" />
@@ -176,6 +187,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Gui\Dialogos\DialogoRegistrarEmpleado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\Dialogos\DialogoRegistrarEspecialidad.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

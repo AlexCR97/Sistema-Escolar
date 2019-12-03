@@ -25,6 +25,21 @@ namespace SistemaEscolar.Gui.Util
         }
         #endregion
 
+        #region Vistas coordinadores
+        private static List<VistaCoordinador> vistasCoordinadores;
+
+        public static List<VistaCoordinador> VistasCoordinadores
+        {
+            get {
+                if (vistasCoordinadores == null)
+                {
+                    vistasCoordinadores = new CasoUsoListarVistaCoordinadores().Ejecutar();
+                }
+                return vistasCoordinadores;
+            }
+        }
+        #endregion
+
         #region Detalles alumnos
         private static List<VistaDetallesAlumno> vistasDetallesAlumnos;
 
@@ -220,6 +235,17 @@ namespace SistemaEscolar.Gui.Util
                 return vistasCarrerasEspecialidades;
             }
         }
+
+        public static void ActualizarVistasCarrerasEspecialidades()
+        {
+            List<VistaCarrerasEspecialidades> carreras = new CasoUsoListarVistaCarrerasEspecialidades().Ejecutar();
+
+            if (carreras != null)
+            {
+                vistasCarrerasEspecialidades.Clear();
+                vistasCarrerasEspecialidades.AddRange(carreras);
+            }
+        }
         #endregion
 
         #region Grupos
@@ -287,5 +313,20 @@ namespace SistemaEscolar.Gui.Util
             }
             return nombre;
         }
-    }    
+
+        #region Vistas Detalles Empleados
+        private static List<VistaDetallesEmpleados> vistasDetallesEmpleados;
+
+        public static List<VistaDetallesEmpleados> VistasDetallesEmpleados
+        {
+            get {
+                if (vistasDetallesEmpleados == null)
+                {
+                    vistasDetallesEmpleados = new CasoUsoListarVistaDetallesEmpleados().Ejecutar();
+                }
+                return vistasDetallesEmpleados;
+            }
+        }
+        #endregion
+    }
 }

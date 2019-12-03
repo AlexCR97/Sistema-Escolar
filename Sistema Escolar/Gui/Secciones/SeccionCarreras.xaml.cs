@@ -43,8 +43,13 @@ namespace SistemaEscolar.Gui.Secciones
 
         private void RegistrarCarrera()
         {
-            var dialogo = new DialogoRegistrarCarrera();
+            var dialogo = new DialogoRegistrarCarrera(TipoOperacion.Registrar);
             dialogo.ShowDialog();
+
+            lvCarreras.ItemsSource = null;
+
+            ConsultasGlobales.ActualizarVistasCarrerasEspecialidades();
+            LlenarListaCarreras();
         }
 
         private void LlenarFiltros()
@@ -58,6 +63,9 @@ namespace SistemaEscolar.Gui.Secciones
         private void LlenarDatosCarrera()
         {
             var carrera = lvCarreras.SelectedItem as VistaCarrerasEspecialidades;
+
+            if (carrera == null)
+                return;
 
             // contar materias con la carrera seleccionada
             int cantidadMaterias = ConsultasGlobales.VistasMateriasConCarreras
