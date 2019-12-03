@@ -1,5 +1,7 @@
 ﻿using SistemaEscolar.Entidades;
 using SistemaEscolar.Negocios.Casos.Implementaciones;
+using SistemaEscolar.Negocios.Validadores;
+using SistemaEscolar.Negocios.Validadores.Propiedades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +44,7 @@ namespace SistemaEscolar.Gui.Dialogos
         private void ChkGrupoConocido_Unchecked(object sender, RoutedEventArgs e)
         {
             cbGrupo.IsEnabled = false;
-           
+
             txtCodigoGrupo.IsEnabled = true;
 
             cbProfesor.IsEnabled = true;
@@ -52,7 +54,7 @@ namespace SistemaEscolar.Gui.Dialogos
         private void ChkGrupoConocido_Checked(object sender, RoutedEventArgs e)
         {
             cbGrupo.IsEnabled = true;
-            
+
             txtCodigoGrupo.IsEnabled = false;
 
             cbProfesor.IsEnabled = false;
@@ -84,20 +86,15 @@ namespace SistemaEscolar.Gui.Dialogos
             gruposDistintos.ForEach(v => listaClaves.Add(v.ClaveGrupo));
 
             cbGrupo.ItemsSource = listaClaves;
+            cbGrupo.SelectedIndex = 0;
         }
 
         private void BRegistrar_Click(object sender, RoutedEventArgs e)
         {
-
             if (chkGrupoConocido.IsChecked == true)
-            {
                 AgregarDatosGrupo();
-            }
             else
-            {
                 RegistrarNuevoGrupo();
-            }
-
         }
 
         private void AgregarDatosGrupo()
@@ -111,14 +108,16 @@ namespace SistemaEscolar.Gui.Dialogos
             }
             else
             {
-                aula = txtEdificio.Text + txtPlanta.Text + ((txtSalon.Text.Length < 2) ? "0" + txtSalon.Text : txtSalon.Text);
+                if (ValidarDatosGrupo() == true)
+                    aula = txtEdificio.Text + txtPlanta.Text + ((txtSalon.Text.Length < 2) ? "0" + txtSalon.Text : txtSalon.Text);
+                else return;
             }
             var hora = Util.Datos.HorasClases[cbHora.SelectedItem.ToString()];
             var dia = Util.Datos.DiasSemana[cbDia.SelectedItem.ToString()]; ;
 
             var cu = new CasoUsoAgregarDatosGrupo();
 
-            bool exito = cu.Ejecutar(claveGrupo,  aula,  hora, dia);
+            bool exito = cu.Ejecutar(claveGrupo, aula, hora, dia);
 
             if (!exito)
             {
@@ -141,7 +140,9 @@ namespace SistemaEscolar.Gui.Dialogos
             }
             else
             {
-                aula = txtEdificio.Text + txtPlanta.Text + ((txtSalon.Text.Length < 2) ? "0" + txtSalon.Text : txtSalon.Text);
+                if (ValidarDatosGrupo() == true)
+                    aula = txtEdificio.Text + txtPlanta.Text + ((txtSalon.Text.Length < 2) ? "0" + txtSalon.Text : txtSalon.Text);
+                else return;
             }
             var claveProfesor = profesores[cbProfesor.SelectedIndex].IdProfesor;
             var hora = Util.Datos.HorasClases[cbHora.SelectedItem.ToString()];
@@ -232,6 +233,31 @@ namespace SistemaEscolar.Gui.Dialogos
             txtSalon.IsEnabled = false;
 
             cbAulas.IsEnabled = true;
+        }
+
+        private bool ValidarDatosGrupo()
+        {
+            var edificio = txtEdificio.Text;
+            var planta = txtPlanta.Text;
+            var salon = txtSalon.Text;
+
+            var validadores = new List<Validador<string>>()
+            {
+                new ValidadorStringNoVacio(edificio),
+                new ValidadorStringNoVacio(planta),
+                new ValidadorStringNoVacio(salon)
+            };
+
+            foreach (Validador<string> validador in validadores)
+            {
+                if (!validador.Validar())
+                {
+                    MessageBox.Show(validador.UltimoError(), "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }
