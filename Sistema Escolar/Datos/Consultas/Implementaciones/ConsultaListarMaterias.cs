@@ -19,7 +19,7 @@ namespace SistemaEscolar.Datos.Consultas.Implementaciones
 
         protected override string DefinirQuery()
         {
-            return "select cveMateria, nombre, creditos from materias";
+            return "select cveMateria, nombre, creditos, hTeoricas, hPracticas, carrera from materias";
         }
     }
 }
