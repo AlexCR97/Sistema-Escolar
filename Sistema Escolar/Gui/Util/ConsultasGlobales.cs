@@ -314,6 +314,20 @@ namespace SistemaEscolar.Gui.Util
             return nombre;
         }
 
+        #region MateriasCarreras
+
+        private static Dictionary<String, VistaMateria> materiasCarreras;
+        public static Dictionary<String, VistaMateria> MateriasCarreras()
+        {
+            if (materiasCarreras == null)
+            {
+                materiasCarreras = new CasoUsoListarMateriasCarreras().Ejecutar();
+            }
+            return materiasCarreras;
+        }
+
+        #endregion
+
         #region Vistas Detalles Empleados
         private static List<VistaDetallesEmpleados> vistasDetallesEmpleados;
 

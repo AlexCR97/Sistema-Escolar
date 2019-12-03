@@ -37,6 +37,10 @@ namespace SistemaEscolar.Gui.Secciones
 
             lvAulas.MouseLeftButtonUp += (s, e) =>
             {
+                if (lvAulas.SelectedItem == null)
+                {
+                    return;
+                }
                 string aula = lvAulas.SelectedItem.ToString().Trim();
                 CargarGrupos(aula);
             };

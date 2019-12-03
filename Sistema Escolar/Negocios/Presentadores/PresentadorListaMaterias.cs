@@ -24,7 +24,10 @@ namespace SistemaEscolar.Negocios.Presentadores
                     {
                         Codigo = row[0].ToString(),
                         Nombre = row[1].ToString(),
-                        Creditos = Int32.Parse(row[2].ToString())
+                        Creditos = Int32.Parse(row[2].ToString()),
+                        HorasTeoricas = Int32.Parse(row[3].ToString()),
+                        HorasPracticas = Int32.Parse(row[4].ToString()),
+                        Carrera = Int32.Parse(row[5].ToString())
                     });
                 }
 

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SistemaEscolar.Datos.Consultas.Implementaciones
 {
-    class ConsultaListarMaterias : Consulta
+    class ConsultaListarMateriasCarreras : Consulta
     {
-        public ConsultaListarMaterias(params object[] args) : base(args)
+        public ConsultaListarMateriasCarreras(params object[] args) : base(args)
         {
         }
 
@@ -19,7 +19,7 @@ namespace SistemaEscolar.Datos.Consultas.Implementaciones
 
         protected override string DefinirQuery()
         {
-            return "select cveMateria, nombre, creditos, hTeoricas, hPracticas, carrera from materias";
+            return "select * from [Materias con Carrera]";
         }
     }
 }

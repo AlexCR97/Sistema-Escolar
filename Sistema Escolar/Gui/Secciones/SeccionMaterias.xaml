@@ -15,7 +15,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            
+
             <!--Derecha-->
             <Grid Grid.Column="0">
                 <Grid.ColumnDefinitions>
@@ -30,22 +30,13 @@
                 </Grid.RowDefinitions>
 
                 <!--Filtros-->
-                <ComboBox Grid.Column="0" Grid.Row="0" Padding="10 0" VerticalContentAlignment="Center" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 5 5">
-                    <ComboBoxItem Content="Item"/>
-                    <ComboBoxItem Content="Item"/>
-                    <ComboBoxItem Content="Item"/>
+                <ComboBox Name="cbCarreras" Grid.Column="0" Grid.Row="0" Padding="10 0" VerticalContentAlignment="Center" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 5 5">
                 </ComboBox>
 
-                <TextBox Grid.Column="1" Grid.Row="0"  x:Name="tbMatricula" Text="Matricula" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="5 5 0 5"/>
+                <TextBox Name="txtCodigoMateria" Grid.Column="1" Grid.Row="0" Text="Matricula" Padding="10 0" VerticalContentAlignment="Center" BorderBrush="LightGray" util:CornerRadiusSetter.CornerRadius="10" Margin="5 5 0 5"/>
 
-                <ComboBox Grid.Column="0" Grid.Row="1" Padding="10 0" VerticalContentAlignment="Center" util:CornerRadiusSetter.CornerRadius="10" Margin="0 5 5 5">
-                    <ComboBoxItem Content="Item"/>
-                    <ComboBoxItem Content="Item"/>
-                    <ComboBoxItem Content="Item"/>
-                </ComboBox>
-                
                 <!--Materias-->
-                <ListView Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" ItemsSource="{Binding Materias}" Margin="0 20 0 0" Background="Transparent" BorderThickness="0">
+                <ListView Name="lvMaterias" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" ItemsSource="{Binding Materias}" Margin="0 20 0 0" Background="Transparent" BorderThickness="0">
 
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
@@ -60,15 +51,17 @@
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition/>
-                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    
+
                                     <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                                        <TextBlock Text="Plantilla"/>
-                                        <TextBlock Text="Plantilla" Margin="0 10 0 0"/>
+                                        <TextBlock Text="{Binding Codigo}"/>
+                                        <TextBlock Text="{Binding Nombre}" Margin="0 10 0 0"/>
                                     </StackPanel>
 
-                                    <TextBlock Grid.Column="1" Text="Plantilla" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                    <TextBlock Margin="5 0" Grid.Column="1" Text="Creditos: " HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                    <TextBlock Margin="5 0" Grid.Column="2" Text="{Binding Creditos}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
                                 </Grid>
                             </Border>
                         </DataTemplate>
@@ -94,17 +87,17 @@
 
                     <!--Botones-->
                     <Border Padding="5" Grid.Column="0" >
-                        <Button Content="Editar" util:CornerRadiusSetter.CornerRadius="10"/>
+                        <Button x:Name="bEditarMateria" Content="Editar" util:CornerRadiusSetter.CornerRadius="10"/>
                     </Border>
 
                     <Border Padding="5" Grid.Column="3" >
-                        <Button Content="Nuevo" util:CornerRadiusSetter.CornerRadius="10"/>
+                        <Button Name="bNuevaMateria" Content="Nuevo" util:CornerRadiusSetter.CornerRadius="10" Click="bNuevaMateria_Click"/>
                     </Border>
 
                     <!--Informacion-->
                     <StackPanel Grid.ColumnSpan="3" Grid.Row="1" Margin="20">
-                        <TextBlock Text="Codigo de la materia" HorizontalAlignment="Center" Margin="0 10 0 0"/>
-                        <TextBlock Text="Nombre de la materia" HorizontalAlignment="Center" Margin="0 5 0 0"/>
+                        <TextBlock x:Name="tbCodigoMateria" Text="Codigo de la materia" HorizontalAlignment="Center" Margin="0 10 0 0"/>
+                        <TextBlock x:Name="tbNombreMateria" Text="Nombre de la materia" HorizontalAlignment="Center" Margin="0 5 0 0"/>
 
                         <Grid Margin="0 50" Width="400">
                             <Grid.ColumnDefinitions>
@@ -117,7 +110,7 @@
                             <Border CornerRadius="10" Background="LightGray" Padding="10" Grid.Column="0" Margin="3">
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <Button Width="50" Height="50" Margin="0 0 0 10"/>
-                                    <TextBlock Text="Administrador"/>
+                                    <TextBlock x:Name="tbCreditos" Text="Creditos 5"/>
                                 </StackPanel>
                             </Border>
 
@@ -125,7 +118,7 @@
                             <Border CornerRadius="10" Background="LightGray" Padding="10" Grid.Column="1" Margin="3">
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <Button Width="50" Height="50" Margin="0 0 0 10"/>
-                                    <TextBlock Text="Administrador"/>
+                                    <TextBlock x:Name="tbHorasTeoricas" Text="Horas Teoricas"/>
                                 </StackPanel>
                             </Border>
 
@@ -133,7 +126,7 @@
                             <Border CornerRadius="10" Background="LightGray" Padding="10" Grid.Column="2" Margin="3">
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <Button Width="50" Height="50" Margin="0 0 0 10"/>
-                                    <TextBlock Text="Administrador"/>
+                                    <TextBlock Name="tbHorasPracticas" Text="Horas PRacticas 60"/>
                                 </StackPanel>
                             </Border>
                         </Grid>
